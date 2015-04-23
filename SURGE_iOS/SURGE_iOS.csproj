@@ -134,14 +134,6 @@
     <Compile Include="SurgeDetailsViewController.designer.cs">
       <DependentUpon>SurgeDetailsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="BidForViewController.cs" />
-    <Compile Include="BidForViewController.designer.cs">
-      <DependentUpon>BidForViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BidforJobViewController.cs" />
-    <Compile Include="BidforJobViewController.designer.cs">
-      <DependentUpon>BidforJobViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="JobsListViewController.cs" />
     <Compile Include="JobsListViewController.designer.cs">
       <DependentUpon>JobsListViewController.cs</DependentUpon>
@@ -149,6 +141,14 @@
     <Compile Include="NavigationViewController.cs" />
     <Compile Include="NavigationViewController.designer.cs">
       <DependentUpon>NavigationViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BidForTaskViewController.cs" />
+    <Compile Include="BidForTaskViewController.designer.cs">
+      <DependentUpon>BidForTaskViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AcceptTaskViewController.cs" />
+    <Compile Include="AcceptTaskViewController.designer.cs">
+      <DependentUpon>AcceptTaskViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -181,6 +181,30 @@ namespace SURGE.Common
 			}
 			return true;
 		}
+
+		//To bid task by provider 
+		public static bool BidTaskByProvider(int jobId, int providerId, int bidAmount){
+			SqlConnection myCon = new SqlConnection (_cs);
+
+			SqlCommand myCmd = new SqlCommand("SP_GetSetTagJobs", myCon); 
+			myCmd.CommandType = CommandType.StoredProcedure;
+			myCmd.Parameters.AddWithValue ("@jobId", jobId);
+			myCmd.Parameters.AddWithValue ("@providerId", providerId);
+			myCmd.Parameters.AddWithValue ("@bidAmount", bidAmount);
+			myCmd.Parameters.AddWithValue ("@ptype", 1);
+
+			try{
+				myCon.Open();
+				myCmd.ExecuteNonQuery();
+			}
+			catch{
+				return false;
+			}
+			finally{
+				myCon.Close();
+			}
+			return true;
+		}
 	}
 }
 

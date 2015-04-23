@@ -11,8 +11,8 @@ using UIKit;
 
 namespace SURGE_iOS
 {
-	[Register ("SurgeDetailsViewController")]
-	partial class SurgeDetailsViewController
+	[Register ("BidForTaskViewController")]
+	partial class BidForTaskViewController
 	{
 		void ReleaseDesignerOutlets ()
 		{

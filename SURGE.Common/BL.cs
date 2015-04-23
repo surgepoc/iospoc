@@ -54,6 +54,11 @@ namespace SURGE.Common
 		public static bool ChangeJobStatus(int jobId, string jobStatus){
 			return DL.ChangeJobStatus (jobId, jobStatus);
 		}
+
+		//To tag a job by provider
+		public static bool BidTaskByProvider(int jobId, int providerId, int bidAmount){
+			return DL.BidTaskByProvider (jobId, providerId, bidAmount);
+		}
 	}
 }
 

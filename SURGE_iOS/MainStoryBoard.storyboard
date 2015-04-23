@@ -6,7 +6,7 @@
     <scenes>
         <scene sceneID="11">
             <objects>
-                <viewController id="12" sceneMemberID="viewController" customClass="PostJobViewController" storyboardIdentifier="PostJobViewController">
+                <viewController id="12" sceneMemberID="viewController" customClass="PostJobViewController" storyboardIdentifier="PostJobViewController" title="Post Task">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9"/>
                         <viewControllerLayoutGuide type="bottom" id="10"/>
@@ -28,7 +28,7 @@
         </scene>
         <scene sceneID="66">
             <objects>
-                <viewController id="67" sceneMemberID="viewController" customClass="TagProviderViewController" storyboardIdentifier="TagProviderViewController">
+                <viewController id="67" sceneMemberID="viewController" customClass="TagProviderViewController" storyboardIdentifier="TagProviderViewController" title="Tag Provider">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="64"/>
                         <viewControllerLayoutGuide type="bottom" id="65"/>
@@ -50,7 +50,7 @@
         </scene>
         <scene sceneID="96">
             <objects>
-                <viewController id="97" sceneMemberID="viewController" customClass="ReviewProviderViewController" storyboardIdentifier="ReviewProviderViewController">
+                <viewController id="97" sceneMemberID="viewController" customClass="ReviewProviderViewController" storyboardIdentifier="ReviewProviderViewController" title="Review Provider">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="116"/>
                         <viewControllerLayoutGuide type="bottom" id="117"/>
@@ -72,7 +72,7 @@
         </scene>
         <scene sceneID="120">
             <objects>
-                <viewController id="121" sceneMemberID="viewController" customClass="AwardJobViewController" storyboardIdentifier="AwardJobViewController">
+                <viewController id="121" sceneMemberID="viewController" customClass="AwardJobViewController" storyboardIdentifier="AwardJobViewController" title="Award Job">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="141"/>
                         <viewControllerLayoutGuide type="bottom" id="142"/>
@@ -94,7 +94,7 @@
         </scene>
         <scene sceneID="157">
             <objects>
-                <viewController id="158" sceneMemberID="viewController" customClass="SurgeDetailsViewController" storyboardIdentifier="SurgeDetailsViewController">
+                <viewController id="158" sceneMemberID="viewController" customClass="SurgeDetailsViewController" storyboardIdentifier="SurgeDetailsViewController" title="Surge Details">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="184"/>
                         <viewControllerLayoutGuide type="bottom" id="185"/>
@@ -104,104 +104,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="160" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="Surge Details">
-                                <rect key="frame" x="20" y="41" width="175" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="178" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="76" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="179" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="Looking for Ortho on coming saturday..">
-                                <rect key="frame" x="17" y="97" width="286" height="48"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="162" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="153" width="257" height="30"/>
-                                <state key="normal" title="Click here for complete job details...">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="164">
-                                <rect key="frame" x="0.0" y="539" width="320" height="29"/>
-                                <segments>
-                                    <segment title="Approve Submission"/>
-                                    <segment title="Cancel"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="to" lineBreakMode="tailTruncation" minimumFontSize="10" id="182" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="205" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" minimumFontSize="10" id="166" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="317" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shankar Manne" lineBreakMode="tailTruncation" minimumFontSize="10" id="172" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="347" width="269" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" minimumFontSize="10" id="168" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="387" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="*****" lineBreakMode="tailTruncation" minimumFontSize="10" id="170" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="416" width="269" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bid for" lineBreakMode="tailTruncation" minimumFontSize="10" id="174" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="445" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="176" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="$280">
-                                <rect key="frame" x="20" y="474" width="269" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="183" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="17" y="231" width="76" height="78"/>
-                            </imageView>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="lblSurgeDetailsCaption" destination="160" id="name-outlet-160"/>
-                        <outlet property="btnJobDetails" destination="162" id="161"/>
-                        <outlet property="btnAction" destination="164" id="163"/>
-                        <outlet property="lblProviderNameCaption" destination="166" id="165"/>
-                        <outlet property="lblRatingCaption" destination="168" id="167"/>
-                        <outlet property="lblRating" destination="170" id="169"/>
-                        <outlet property="lblProviderName" destination="172" id="171"/>
-                        <outlet property="lblBidCaption" destination="174" id="173"/>
-                        <outlet property="lblBid" destination="176" id="175"/>
                     </connections>
+                    <navigationItem title="Title" id="1153" key="navigationItem"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="186" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,7 +116,7 @@
         </scene>
         <scene sceneID="204">
             <objects>
-                <viewController id="205" sceneMemberID="viewController" customClass="BidforJobViewController" storyboardIdentifier="BidforJobViewController">
+                <viewController id="205" sceneMemberID="viewController" customClass="BidForTaskViewController" storyboardIdentifier="BidForTaskViewController" title="Tag Job">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="225"/>
                         <viewControllerLayoutGuide type="bottom" id="226"/>
@@ -219,102 +126,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="207" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="Tag Job">
-                                <rect key="frame" x="20" y="41" width="175" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="215" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="76" width="98" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="216" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="Looking for Ortho on coming saturday..">
-                                <rect key="frame" x="17" y="97" width="286" height="48"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="209" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="153" width="257" height="30"/>
-                                <state key="normal" title="Click here for complete job details...">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="213" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="-2" y="311" width="320" height="220"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="217">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="218" tableViewCell="217">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="219">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="220" tableViewCell="219">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="221">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="222" tableViewCell="221">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="211">
-                                <rect key="frame" x="0.0" y="539" width="320" height="29"/>
-                                <segments>
-                                    <segment title="Tag Job"/>
-                                    <segment title="Cancel"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your bid amount" lineBreakMode="tailTruncation" minimumFontSize="10" id="229" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="207" width="145" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="230" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Enter your bid amount">
-                                <rect key="frame" x="20" y="236" width="283" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Others tagged for this job" lineBreakMode="tailTruncation" minimumFontSize="10" id="231" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="274" width="215" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="lblTagJobHeading" destination="207" id="name-outlet-207"/>
-                        <outlet property="btnJobDetails" destination="209" id="208"/>
-                        <outlet property="btnAction" destination="211" id="210"/>
-                        <outlet property="tblTaggedProviders" destination="213" id="name-outlet-213"/>
-                        <outlet property="lblBidAmountCaption" destination="229" id="name-outlet-229"/>
-                        <outlet property="txtBidAmount" destination="230" id="name-outlet-230"/>
-                        <outlet property="lblOtherCaption" destination="231" id="name-outlet-231"/>
                     </connections>
+                    <navigationItem title="Title" id="1176" key="navigationItem"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="227" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -397,12 +213,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </navigationBar>
                     <connections>
-                        <segue id="1054" destination="97" kind="relationship" relationship="rootViewController"/>
+                        <segue id="1247" destination="1225" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="338" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440" y="710"/>
+            <point key="canvasLocation" x="108" y="1488"/>
+        </scene>
+        <scene sceneID="1224">
+            <objects>
+                <viewController id="1225" sceneMemberID="viewController" customClass="AcceptTaskViewController" storyboardIdentifier="AcceptTaskViewController" title="Accept_Reject Task">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1222"/>
+                        <viewControllerLayoutGuide type="bottom" id="1223"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1226">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem title="Title" id="1246" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1227" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1431" y="716"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

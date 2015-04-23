@@ -11,7 +11,7 @@ namespace SURGE_iOS
 	partial class AwardJobViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption, lblAwardToCaption, lblProviderNameCaption,
+		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblAwardToCaption, lblProviderNameCaption,
 		lblProviderName, lblRating, lblBidAmountCaption, lblBidAmount;
 		UIImageView imgProvider;
 		UIButton btnJobDetails, btnAwardJob, btnReviewProviders;

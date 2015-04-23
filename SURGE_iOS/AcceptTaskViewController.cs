@@ -8,11 +8,11 @@ using System.Drawing;
 
 namespace SURGE_iOS
 {
-	partial class ReviewProviderViewController : UIViewController
+	partial class AcceptTaskViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption;
-		UIButton btnJobDetails;
+		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption, lblBidAmountCaption, lblBidAmount;
+		UIButton btnJobDetails, btnAcceptBid, btnRejectBid;
 		UITableView tblProviders;
 		UIScrollView scrollView;
 
@@ -20,11 +20,14 @@ namespace SURGE_iOS
 
 		float h,w;
 		public int JobId{ get; set; }
+		public int ProviderId{ get; set; }
+		DataTable dtProviders;
 
 		#region Constructor
-		public ReviewProviderViewController (IntPtr handle) : base (handle)
+		public AcceptTaskViewController (IntPtr handle) : base (handle)
 		{
-			this.Title = "Review Providers";
+			this.Title = "Accept/Reject Task";
+
 		}
 		#endregion Constructor
 
@@ -36,16 +39,17 @@ namespace SURGE_iOS
 			if(this.JobId ==0){
 				this.JobId = 30;
 			}
+			ProviderId=1;
 
-			//			this.Title=this.JobId.ToString();
 			#endregion tempCode
 
 			h = 30;
 			w = float.Parse (View.Frame.Width.ToString ());
+			dtProviders = BL.GetProvidersInterestedInJob (JobId);
 
 			#region Instantiate Controls
-			lblHeading = new UILabel(){Text = "Review Providers", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
-			lblSubTitle = new UILabel(){Text = "View Providers interested in this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
+			lblHeading = new UILabel(){Text = "Bid for Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblSubTitle = new UILabel(){Text = "Submit your bid for this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
@@ -56,9 +60,23 @@ namespace SURGE_iOS
 			btnJobDetails.Frame = new RectangleF (10, 130, 140, h);
 			btnJobDetails.SetTitle ("Click for full job details", UIControlState.Normal);
 
-			lblProvidersCaption = new UILabel (){ Text = "Click on below provider to award", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
+			lblBidAmountCaption = new UILabel(){ Text = "Your bid amount", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
+			lblBidAmount = new UILabel(){ Text = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
+			lblBidAmount.TextColor = UIColor.FromRGB (81, 125, 137);
 
-			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 200, w - 10, 200)};
+			lblProvidersCaption = new UILabel (){ Text = "Others, who tagged for this job", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
+
+			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 200)};
+
+			btnAcceptBid = UIButton.FromType(UIButtonType.RoundedRect);
+			btnAcceptBid.Font = UIFont.FromName ("Helvetica", 14f);
+			btnAcceptBid.Frame = new RectangleF (10, 450, 70, h);
+			btnAcceptBid.SetTitle ("Accept Bid", UIControlState.Normal);
+
+			btnRejectBid = UIButton.FromType(UIButtonType.RoundedRect);
+			btnRejectBid.Font = UIFont.FromName ("Helvetica", 14f);
+			btnRejectBid.Frame = new RectangleF (10, 485, 70, h);
+			btnRejectBid.SetTitle ("Reject Bid", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
@@ -70,8 +88,12 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblTitleCaption);
 			scrollView.AddSubview(lblJobTitle);
 			scrollView.AddSubview(btnJobDetails);
+			scrollView.AddSubview(lblBidAmountCaption);
+			scrollView.AddSubview(lblBidAmount);
 			scrollView.AddSubview(lblProvidersCaption);
 			scrollView.AddSubview(tblProviders);
+			scrollView.AddSubview(btnAcceptBid);
+			scrollView.AddSubview(btnRejectBid);
 
 
 			View.AddSubview(scrollView);
@@ -89,23 +111,28 @@ namespace SURGE_iOS
 				lblJobTitle.Text = dtJobDetails.Rows[0]["Title"].ToString();
 			}
 
-			tblProviders.Source = new ProviderTableSource(JobId, this);
+			tblProviders.Source = new ProviderTableSource(JobId, this, dtProviders);
 
 			#endregion load job details
-		}
+				
+			#region Load his bid
+			foreach(DataRow dr in dtProviders.Rows){
+				if(ProviderId == Int32.Parse(dr["ProviderId"].ToString())){
+					lblBidAmount.Text = "$" + dr["BidAmount"].ToString();
+				}
+			}
+			#endregion Load his bid
+		}	
 
 		class ProviderTableSource: UITableViewSource
 		{
 			DataTable dtProvidersTagged;
 			string cellIdentifier = "TableCell";
-			int jobId;
-			UIViewController parent;
 
-			public ProviderTableSource(int _jobId, UIViewController _parent)
+
+			public ProviderTableSource(int _jobId, UIViewController _parent, DataTable _dtProviders)
 			{
-				this.dtProvidersTagged = BL.GetProvidersInterestedInJob(_jobId);
-				this.jobId = _jobId;
-				this.parent = _parent;
+					this.dtProvidersTagged = _dtProviders;
 			}
 
 			#region implemented abstract members of UITableViewSource
@@ -122,23 +149,13 @@ namespace SURGE_iOS
 
 				return cell;
 			}
-				
+
 			public override nint RowsInSection (UITableView tableview, nint section)
 			{
 				return dtProvidersTagged.Rows.Count;
 			}
 
-			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
-			{
-				//Navigate to award page to award job to a provider
-				AwardJobViewController awardJobView = parent.Storyboard.InstantiateViewController ("AwardJobViewController") as AwardJobViewController;
-				awardJobView.JobId = jobId;
-				awardJobView.ProviderId = Int32.Parse (dtProvidersTagged.Rows [indexPath.Row] ["ProviderId"].ToString ());
-
-				parent.NavigationController.PushViewController (awardJobView, true);
-			}
 			#endregion
 		}
-
 	}
 }
