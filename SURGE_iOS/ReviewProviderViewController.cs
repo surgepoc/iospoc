@@ -15,6 +15,7 @@ namespace SURGE_iOS
 		UIButton btnJobDetails;
 		UITableView tblProviders;
 		UIScrollView scrollView;
+		event EventHandler<ProviderSelected> AwardRowSelected;
 
 		#endregion Declare Controls
 
@@ -24,6 +25,7 @@ namespace SURGE_iOS
 		#region Constructor
 		public ReviewProviderViewController (IntPtr handle) : base (handle)
 		{
+			this.Title = "Review Providers";
 		}
 		#endregion Constructor
 
@@ -88,7 +90,7 @@ namespace SURGE_iOS
 				lblJobTitle.Text = dtJobDetails.Rows[0]["Title"].ToString();
 			}
 
-			tblProviders.Source = new ProviderTableSource(JobId);
+			tblProviders.Source = new ProviderTableSource(JobId, this);
 
 			#endregion load job details
 		}
@@ -98,10 +100,13 @@ namespace SURGE_iOS
 			DataTable dtProvidersTagged;
 			string cellIdentifier = "TableCell";
 			int jobId;
-			public ProviderTableSource(int _jobId)
+			UIViewController parent;
+
+			public ProviderTableSource(int _jobId, UIViewController _parent)
 			{
 				this.dtProvidersTagged = BL.GetProvidersInterestedInJob(_jobId);
 				this.jobId = _jobId;
+				this.parent = _parent;
 			}
 
 			#region implemented abstract members of UITableViewSource
@@ -126,17 +131,18 @@ namespace SURGE_iOS
 
 			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
+				//Navigate to award page to award job to a provider
+				AwardJobViewController awardJobView = parent.Storyboard.InstantiateViewController ("AwardJobViewController") as AwardJobViewController;
+				awardJobView.JobId = jobId;
+				awardJobView.ProviderId = Int32.Parse (dtProvidersTagged.Rows [indexPath.Row] ["ProviderId"].ToString ());
 
-				UIAlertView av = new UIAlertView ("Job Awarded", 
-					                 dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString () + " is awarded with this job", null, "OK");
-
-				if (BL.AwardJob (jobId, Int32.Parse (dtProvidersTagged.Rows [indexPath.Row] ["ProviderId"].ToString ()))) {
-					av.Show ();		
-				}
-
-				tableView.DeselectRow (indexPath, true);
+				parent.NavigationController.PushViewController (awardJobView, true);
 			}
 			#endregion
+		}
+
+		class ProviderSelected: EventArgs{
+			public int ProviderId{ get; set;}
 		}
 	}
 }
