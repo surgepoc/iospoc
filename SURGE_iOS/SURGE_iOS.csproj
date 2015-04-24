@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ProfilePic.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -110,6 +111,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -134,10 +136,6 @@
     <Compile Include="SurgeDetailsViewController.designer.cs">
       <DependentUpon>SurgeDetailsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="JobsListViewController.cs" />
-    <Compile Include="JobsListViewController.designer.cs">
-      <DependentUpon>JobsListViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="NavigationViewController.cs" />
     <Compile Include="NavigationViewController.designer.cs">
       <DependentUpon>NavigationViewController.cs</DependentUpon>
@@ -150,10 +148,22 @@
     <Compile Include="AcceptTaskViewController.designer.cs">
       <DependentUpon>AcceptTaskViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubmitTaskViewController.cs" />
+    <Compile Include="SubmitTaskViewController.designer.cs">
+      <DependentUpon>SubmitTaskViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminJobsViewController.cs" />
+    <Compile Include="AdminJobsViewController.designer.cs">
+      <DependentUpon>AdminJobsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderJobsViewController.cs" />
+    <Compile Include="ProviderJobsViewController.designer.cs">
+      <DependentUpon>ProviderJobsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\TestImg.jpg" />
-    <BundleResource Include="Resources\ProfileDefault.png" />
+    <BundleResource Include="Resources\ProfilePic.jpg" />
   </ItemGroup>
 </Project>

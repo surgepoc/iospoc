@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="27"/>
+            <point key="canvasLocation" x="1683" y="47"/>
         </scene>
         <scene sceneID="66">
             <objects>
@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="25"/>
+            <point key="canvasLocation" x="2149" y="45"/>
         </scene>
         <scene sceneID="96">
             <objects>
@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="118" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992" y="29"/>
+            <point key="canvasLocation" x="2597" y="42"/>
         </scene>
         <scene sceneID="120">
             <objects>
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="143" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="724"/>
+            <point key="canvasLocation" x="3056" y="36"/>
         </scene>
         <scene sceneID="157">
             <objects>
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="186" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="595" y="724"/>
+            <point key="canvasLocation" x="3508" y="34"/>
         </scene>
         <scene sceneID="204">
             <objects>
@@ -134,77 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="227" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="725"/>
-        </scene>
-        <scene sceneID="260">
-            <objects>
-                <viewController id="261" sceneMemberID="viewController" customClass="JobsListViewController" storyboardIdentifier="JobsListViewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="258"/>
-                        <viewControllerLayoutGuide type="bottom" id="259"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="262">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="265" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" text="Jobs List">
-                                <rect key="frame" x="28" y="40" width="175" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="275" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="0.0" y="84" width="318" height="425"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="276">
-                                        <rect key="frame" x="0.0" y="22" width="318" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="277" tableViewCell="276">
-                                            <rect key="frame" x="0.0" y="0.0" width="318" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="278">
-                                        <rect key="frame" x="0.0" y="66" width="318" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="279" tableViewCell="278">
-                                            <rect key="frame" x="0.0" y="0.0" width="318" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="280">
-                                        <rect key="frame" x="0.0" y="110" width="318" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="281" tableViewCell="280">
-                                            <rect key="frame" x="0.0" y="0.0" width="318" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="294" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="524" width="94" height="30"/>
-                                <state key="normal" title="New Job">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="lblJobsListHeading" destination="265" id="name-outlet-265"/>
-                        <outlet property="tblJobsList" destination="275" id="name-outlet-275"/>
-                        <outlet property="btnNewPost" destination="294" id="name-outlet-294"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="263" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1428" y="24"/>
+            <point key="canvasLocation" x="1689" y="784"/>
         </scene>
         <scene sceneID="333">
             <objects>
@@ -213,12 +143,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </navigationBar>
                     <connections>
-                        <segue id="1247" destination="1225" kind="relationship" relationship="rootViewController"/>
+                        <segue id="1947" destination="97" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="338" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="1488"/>
+            <point key="canvasLocation" x="115" y="426"/>
         </scene>
         <scene sceneID="1224">
             <objects>
@@ -236,7 +166,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1227" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1431" y="716"/>
+            <point key="canvasLocation" x="2150" y="777"/>
+        </scene>
+        <scene sceneID="1475">
+            <objects>
+                <viewController id="1476" sceneMemberID="viewController" customClass="SubmitTaskViewController" storyboardIdentifier="SubmitTaskViewController" title="Submit Task">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1473"/>
+                        <viewControllerLayoutGuide type="bottom" id="1474"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1477">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem title="Title" id="1492" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1478" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="764"/>
+        </scene>
+        <scene sceneID="1586">
+            <objects>
+                <viewController id="1587" sceneMemberID="viewController" customClass="AdminJobsViewController" storyboardIdentifier="AdminJobsViewController" title="Admin Jobs">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1584"/>
+                        <viewControllerLayoutGuide type="bottom" id="1585"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1588">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem title="Title" id="1614" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1589" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1219" y="55"/>
+        </scene>
+        <scene sceneID="1593">
+            <objects>
+                <viewController id="1594" sceneMemberID="viewController" customClass="ProviderJobsViewController" storyboardIdentifier="ProviderJobsViewController" title="Provider Jobs">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1591"/>
+                        <viewControllerLayoutGuide type="bottom" id="1592"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1595">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1596" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="778"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -248,5 +231,6 @@
         <image name="TestImg.jpg" width="128" height="128"/>
         <image name="account_and_control_w.png" width="128" height="128"/>
         <image name="ProfileDefault.png" width="128" height="128"/>
+        <image name="ProfilePic.jpg" width="128" height="128"/>
     </resources>
 </document>

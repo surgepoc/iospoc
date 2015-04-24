@@ -12,7 +12,7 @@ namespace SURGE_iOS
 	{
 		#region Declare Controls
 		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption;
-		UIButton btnJobDetails;
+		UIButton btnJobDetails, btnTaskList, btnTagProviders, btnNewTask;
 		UITableView tblProviders;
 		UIScrollView scrollView;
 
@@ -34,7 +34,7 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 30;
+				this.JobId = 33;
 			}
 
 			//			this.Title=this.JobId.ToString();
@@ -60,6 +60,21 @@ namespace SURGE_iOS
 
 			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 200, w - 10, 200)};
 
+			btnTaskList = UIButton.FromType(UIButtonType.RoundedRect);
+			btnTaskList.Font = UIFont.FromName ("Helvetica", 14f);
+			btnTaskList.Frame = new RectangleF (10, 400, 110, h);
+			btnTaskList.SetTitle ("Back to Task List", UIControlState.Normal);
+
+			btnTagProviders = UIButton.FromType(UIButtonType.RoundedRect);
+			btnTagProviders.Font = UIFont.FromName ("Helvetica", 14f);
+			btnTagProviders.Frame = new RectangleF (10, 435, 90, h);
+			btnTagProviders.SetTitle ("Tag Providers", UIControlState.Normal);
+
+			btnNewTask = UIButton.FromType(UIButtonType.RoundedRect);
+			btnNewTask.Font = UIFont.FromName ("Helvetica", 14f);
+			btnNewTask.Frame = new RectangleF (10, 470, 65, h);
+			btnNewTask.SetTitle ("New Task", UIControlState.Normal);
+
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
 				ContentSize = new CoreGraphics.CGSize(View.Frame.Width, 800)
@@ -72,7 +87,9 @@ namespace SURGE_iOS
 			scrollView.AddSubview(btnJobDetails);
 			scrollView.AddSubview(lblProvidersCaption);
 			scrollView.AddSubview(tblProviders);
-
+			scrollView.AddSubview(btnTaskList);
+			scrollView.AddSubview(btnTagProviders);
+			scrollView.AddSubview(btnNewTask);
 
 			View.AddSubview(scrollView);
 
@@ -92,6 +109,23 @@ namespace SURGE_iOS
 			tblProviders.Source = new ProviderTableSource(JobId, this);
 
 			#endregion load job details
+
+			btnTaskList.TouchUpInside+= (object sender, EventArgs e) => {
+
+				AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+				this.NavigationController.PushViewController(adminJobsView, true);
+			};
+
+			btnTagProviders.TouchUpInside+= (object sender, EventArgs e) => {
+				TagProviderViewController tagProvider = (TagProviderViewController)this.Storyboard.InstantiateViewController("TagProviderViewController");
+				tagProvider.JobId = JobId;
+				this.NavigationController.PushViewController(tagProvider, true);
+			};
+
+			btnNewTask.TouchUpInside+= (object sender, EventArgs e) => {
+				PostJobViewController postNewTask = (PostJobViewController) this.Storyboard.InstantiateViewController("PostJobViewController");
+				this.NavigationController.PushViewController(postNewTask, true);
+			};
 		}
 
 		class ProviderTableSource: UITableViewSource
@@ -116,7 +150,7 @@ namespace SURGE_iOS
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 
-				cell.ImageView.Image = UIImage.FromBundle ("ProfileDefault.png");
+				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
 				cell.TextLabel.Text = dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString ();
 				cell.DetailTextLabel.Text = "$" + dtProvidersTagged.Rows [indexPath.Row] ["BidAmount"].ToString ();
 

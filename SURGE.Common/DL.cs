@@ -8,7 +8,7 @@ namespace SURGE.Common
 	public class DL
 	{
 		private static string _cs = 
-			"Data Source = surgepoc.db.9526462.hostedresource.com; Initial Catalog = surgepoc; user id = surgepoc; password = Sairam123%";
+			"Data Source = madhurams.co.in; Initial Catalog = surgepoc; user id = surgepoc; password = Sairam123%";
 
 		public DL ()
 		{
@@ -163,11 +163,11 @@ namespace SURGE.Common
 		public static bool ChangeJobStatus(int jobId, string jobStatus ){
 			SqlConnection myCon = new SqlConnection (_cs);
 
-			SqlCommand myCmd = new SqlCommand("SP_GetSetJobs", myCon); 
+			SqlCommand myCmd = new SqlCommand("SP_GetSetTagJobs", myCon); 
 			myCmd.CommandType = CommandType.StoredProcedure;
-			myCmd.Parameters.AddWithValue ("@ID", jobId);
+			myCmd.Parameters.AddWithValue ("@jobId", jobId);
 			myCmd.Parameters.AddWithValue ("@jobStatus", jobStatus);
-			myCmd.Parameters.AddWithValue ("@ptype", 2);
+			myCmd.Parameters.AddWithValue ("@ptype", 5);
 
 			try{
 				myCon.Open();
@@ -204,6 +204,24 @@ namespace SURGE.Common
 				myCon.Close();
 			}
 			return true;
+		}
+			
+		//To get all jobs for Admin/Hospitalist
+		public static DataTable GetAllJobsForAdmins(int adminId, int hospitalistId, int staffId){
+			SqlConnection myCon = new SqlConnection (_cs);
+
+			SqlCommand myCmd = new SqlCommand("SP_GetSetJobs", myCon); 
+			myCmd.CommandType = CommandType.StoredProcedure;
+			myCmd.Parameters.AddWithValue ("@adminId", adminId);
+			myCmd.Parameters.AddWithValue ("@hospitalistId", hospitalistId);
+			myCmd.Parameters.AddWithValue ("@staffId", staffId);
+			myCmd.Parameters.AddWithValue ("@ptype", 4);
+
+			SqlDataAdapter myAdp = new SqlDataAdapter (myCmd);
+			DataTable dtJobs = new DataTable ();
+			myAdp.Fill (dtJobs);
+
+			return dtJobs;
 		}
 	}
 }

@@ -59,6 +59,11 @@ namespace SURGE.Common
 		public static bool BidTaskByProvider(int jobId, int providerId, int bidAmount){
 			return DL.BidTaskByProvider (jobId, providerId, bidAmount);
 		}
+
+		//To get all jobs for Admin/Hospitalist
+		public static DataTable GetAllJobsForAdmins(int adminId, int hospitalistId, int staffId){
+			return DL.GetAllJobsForAdmins (adminId, hospitalistId, staffId);
+		}
 	}
 }
 

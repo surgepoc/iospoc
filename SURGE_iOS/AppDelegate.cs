@@ -23,7 +23,8 @@ namespace SURGE_iOS
 
 			var navigationController = storyBoard.InstantiateInitialViewController () as NavigationViewController;
 			navigationController.NavigationBar.TintColor = UIColor.White;
-			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (81, 115, 137);
+//			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (81, 115, 137);
+			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 44, 84);
 			navigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
 			{
 				ForegroundColor = UIColor.White

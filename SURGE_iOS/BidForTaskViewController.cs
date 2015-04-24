@@ -36,7 +36,7 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 30;
+				this.JobId = 33;
 			}
 			ProviderId=1;
 
@@ -147,7 +147,7 @@ namespace SURGE_iOS
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 
-				cell.ImageView.Image = UIImage.FromBundle ("ProfileDefault.png");
+				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
 				cell.TextLabel.Text = dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString ();
 				cell.DetailTextLabel.Text = "$" + dtProvidersTagged.Rows [indexPath.Row] ["BidAmount"].ToString ();
 

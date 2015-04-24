@@ -8,12 +8,12 @@ using System.Drawing;
 
 namespace SURGE_iOS
 {
-	partial class AcceptTaskViewController : UIViewController
+	partial class SubmitTaskViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption, lblBidAmountCaption, lblBidAmount;
-		UIButton btnJobDetails, btnAcceptBid, btnRejectBid;
-		UITableView tblProviders;
+		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblRemarksCaption, lblBidAmountCaption, lblBidAmount;
+		UIButton btnJobDetails, btnAction, btnCancel;
+		UITextField txtRemarks;
 		UIScrollView scrollView;
 
 		#endregion Declare Controls
@@ -24,10 +24,9 @@ namespace SURGE_iOS
 		DataTable dtProviders;
 
 		#region Constructor
-		public AcceptTaskViewController (IntPtr handle) : base (handle)
+		public SubmitTaskViewController (IntPtr handle) : base (handle)
 		{
-			this.Title = "Accept/Reject Task";
-
+			this.Title = "Submit Task";
 		}
 		#endregion Constructor
 
@@ -37,7 +36,7 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 33;
+				this.JobId = 1;
 			}
 			ProviderId=1;
 
@@ -48,8 +47,8 @@ namespace SURGE_iOS
 			dtProviders = BL.GetProvidersInterestedInJob (JobId);
 
 			#region Instantiate Controls
-			lblHeading = new UILabel(){Text = "Bid for Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
-			lblSubTitle = new UILabel(){Text = "Submit your bid for this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
+			lblHeading = new UILabel(){Text = "Submit Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblSubTitle = new UILabel(){Text = "Submit your task after completion", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
@@ -64,19 +63,19 @@ namespace SURGE_iOS
 			lblBidAmount = new UILabel(){ Text = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
 			lblBidAmount.TextColor = UIColor.FromRGB (81, 125, 137);
 
-			lblProvidersCaption = new UILabel (){ Text = "Others, who tagged for this job", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
+			lblRemarksCaption = new UILabel (){ Text = "Remarks", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
 
-			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 200)};
+			txtRemarks = new UITextField(){ Placeholder="Enter your remarks here", Frame = new RectangleF (10, 250, w - 10, h)};
 
-			btnAcceptBid = UIButton.FromType(UIButtonType.RoundedRect);
-			btnAcceptBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnAcceptBid.Frame = new RectangleF (10, 450, 70, h);
-			btnAcceptBid.SetTitle ("Accept Bid", UIControlState.Normal);
+			btnAction = UIButton.FromType(UIButtonType.RoundedRect);
+			btnAction.Font = UIFont.FromName ("Helvetica", 14f);
+			btnAction.Frame = new RectangleF (10, 285, 80, h);
+			btnAction.SetTitle ("Submit Task", UIControlState.Normal);
 
-			btnRejectBid = UIButton.FromType(UIButtonType.RoundedRect);
-			btnRejectBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnRejectBid.Frame = new RectangleF (10, 485, 70, h);
-			btnRejectBid.SetTitle ("Reject Bid", UIControlState.Normal);
+			btnCancel = UIButton.FromType(UIButtonType.RoundedRect);
+			btnCancel.Font = UIFont.FromName ("Helvetica", 14f);
+			btnCancel.Frame = new RectangleF (10, 320, 50, h);
+			btnCancel.SetTitle ("Cancel", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
@@ -90,10 +89,10 @@ namespace SURGE_iOS
 			scrollView.AddSubview(btnJobDetails);
 			scrollView.AddSubview(lblBidAmountCaption);
 			scrollView.AddSubview(lblBidAmount);
-			scrollView.AddSubview(lblProvidersCaption);
-			scrollView.AddSubview(tblProviders);
-			scrollView.AddSubview(btnAcceptBid);
-			scrollView.AddSubview(btnRejectBid);
+			scrollView.AddSubview(lblRemarksCaption);
+			scrollView.AddSubview(txtRemarks);
+			scrollView.AddSubview(btnAction);
+			scrollView.AddSubview(btnCancel);
 
 
 			View.AddSubview(scrollView);
@@ -101,20 +100,6 @@ namespace SURGE_iOS
 
 			#endregion Instantiate Controls
 
-			#region Load Job Details
-
-			DataTable dtJobDetails = new DataTable();
-			dtJobDetails = BL.GetjobDetail(JobId);
-
-			if(dtJobDetails.Rows.Count>0)
-			{
-				lblJobTitle.Text = dtJobDetails.Rows[0]["Title"].ToString();
-			}
-
-			tblProviders.Source = new ProviderTableSource(JobId, this, dtProviders);
-
-			#endregion load job details
-				
 			#region Load his bid
 			foreach(DataRow dr in dtProviders.Rows){
 				if(ProviderId == Int32.Parse(dr["ProviderId"].ToString())){
@@ -123,23 +108,20 @@ namespace SURGE_iOS
 			}
 			#endregion Load his bid
 
-			btnAcceptBid.TouchUpInside += (object sender, EventArgs e) => {
-				UIAlertView av = new UIAlertView("Task Accepted",
-					"Congrats on your new task", null, "OK");
+			btnAction.TouchUpInside+= (object sender, EventArgs e) => {
 
-				if(BL.ChangeJobStatus(JobId, "Inprogress")){
+				UIAlertView av = new UIAlertView("Task Submitted",
+					"Congrats on submitting your task",null, "OK");
+
+				if((BL.ChangeJobStatus(JobId, "Submitted"))){
 					av.Show();
 				}
 			};
 
-			btnRejectBid.TouchUpInside+= (object sender, EventArgs e) => {
-				UIAlertView av = new UIAlertView("Task Declined",
-					"No Problem, we will let you know other tasks", null, "OK");
-
-				if(BL.ChangeJobStatus(JobId, "New")){
-					av.Show();
-				}
-			};
+			txtRemarks.ShouldReturn += ((textField) => { 
+				textField.ResignFirstResponder ();
+				return true; 
+			});
 		}	
 
 		class ProviderTableSource: UITableViewSource
@@ -150,7 +132,7 @@ namespace SURGE_iOS
 
 			public ProviderTableSource(int _jobId, UIViewController _parent, DataTable _dtProviders)
 			{
-					this.dtProvidersTagged = _dtProviders;
+				this.dtProvidersTagged = _dtProviders;
 			}
 
 			#region implemented abstract members of UITableViewSource

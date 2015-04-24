@@ -12,7 +12,7 @@ namespace SURGE_iOS
 	{
 		#region Declare Controls
 		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblProvidersCaption;
-		UIButton btnJobDetails;
+		UIButton btnJobDetails, btnTaskList;
 		UITableView tblProviders;
 		UIScrollView scrollView;
 
@@ -60,6 +60,11 @@ namespace SURGE_iOS
 
 			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 200, w - 10, 200)};
 
+			btnTaskList = UIButton.FromType(UIButtonType.RoundedRect);
+			btnTaskList.Font = UIFont.FromName ("Helvetica", 14f);
+			btnTaskList.Frame = new RectangleF (10, 400, 140, h);
+			btnTaskList.SetTitle ("Back to Task List", UIControlState.Normal);
+
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
 				ContentSize = new CoreGraphics.CGSize(View.Frame.Width, 800)
@@ -72,7 +77,7 @@ namespace SURGE_iOS
 			scrollView.AddSubview(btnJobDetails);
 			scrollView.AddSubview(lblProvidersCaption);
 			scrollView.AddSubview(tblProviders);
-
+			scrollView.AddSubview(btnTaskList);
 
 			View.AddSubview(scrollView);
 
@@ -95,6 +100,12 @@ namespace SURGE_iOS
 			tblProviders.Source = new ProviderTableSource(dtProviders, JobId);
 
 			#endregion load job details
+
+			btnTaskList.TouchUpInside+= (object sender, EventArgs e) => {
+
+				AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+				this.NavigationController.PushViewController(adminJobsView, true);
+			};
 		}
 
 		class ProviderTableSource: UITableViewSource
@@ -118,7 +129,7 @@ namespace SURGE_iOS
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 
-				cell.ImageView.Image = UIImage.FromBundle ("ProfileDefault.png");
+				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
 				cell.TextLabel.Text = dtProviders.Rows [indexPath.Row] ["Name"].ToString ();
 				cell.DetailTextLabel.Text = GetRating(Int32.Parse(dtProviders.Rows [indexPath.Row] ["Rating"].ToString ()));
 				cell.Accessory = UITableViewCellAccessory.Checkmark;
