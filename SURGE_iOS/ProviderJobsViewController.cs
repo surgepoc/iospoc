@@ -172,6 +172,7 @@ namespace SURGE_iOS
 				if (dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "Awarded") {
 					AcceptTaskViewController acceptTask = (AcceptTaskViewController)parentView.Storyboard.InstantiateViewController ("AcceptTaskViewController");
 					acceptTask.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ()); 
+					acceptTask.ProviderId = providerId;
 					parentView.NavigationController.PushViewController (acceptTask, true);
 				} else if ((dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "New") ||
 				           (dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "Invited")) {
@@ -182,6 +183,7 @@ namespace SURGE_iOS
 				} else { 
 					SubmitTaskViewController submitTaskView = (SubmitTaskViewController)parentView.Storyboard.InstantiateViewController ("SubmitTaskViewController");
 					submitTaskView.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
+					submitTaskView.ProviderId = providerId;
 					parentView.NavigationController.PushViewController (submitTaskView, true);
 				}
 

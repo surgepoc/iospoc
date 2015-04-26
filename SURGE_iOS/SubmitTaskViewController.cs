@@ -36,9 +36,8 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 1;
+				this.JobId = 1;ProviderId=1;
 			}
-			ProviderId=1;
 
 			#endregion tempCode
 
