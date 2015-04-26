@@ -36,9 +36,8 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 33;
+				this.JobId = 33;ProviderId=1;
 			}
-			ProviderId=1;
 
 			#endregion tempCode
 
@@ -51,7 +50,7 @@ namespace SURGE_iOS
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
-			lblJobTitle.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblJobTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnJobDetails = UIButton.FromType(UIButtonType.RoundedRect);
 			btnJobDetails.Font = UIFont.FromName ("Helvetica", 14f);
@@ -60,20 +59,20 @@ namespace SURGE_iOS
 
 			lblBidAmountCaption = new UILabel(){ Text = "Your bid amount", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
 			txtBidAmount = new UITextField(){ Placeholder = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
-			txtBidAmount.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtBidAmount.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblProvidersCaption = new UILabel (){ Text = "Others, who tagged for this job", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
 
-			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 200)};
+			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 170)};
 
 			btnSubmitBid = UIButton.FromType(UIButtonType.RoundedRect);
 			btnSubmitBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnSubmitBid.Frame = new RectangleF (10, 450, 70, h);
+			btnSubmitBid.Frame = new RectangleF (10, 420, 70, h);
 			btnSubmitBid.SetTitle ("Submit Bid", UIControlState.Normal);
 
 			btnCancel = UIButton.FromType(UIButtonType.RoundedRect);
 			btnCancel.Font = UIFont.FromName ("Helvetica", 14f);
-			btnCancel.Frame = new RectangleF (10, 485, 50, h);
+			btnCancel.Frame = new RectangleF (10, 455, 50, h);
 			btnCancel.SetTitle ("Cancel", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
@@ -124,6 +123,13 @@ namespace SURGE_iOS
 
 				if(	BL.BidTaskByProvider(JobId, ProviderId, Int32.Parse(txtBidAmount.Text))){
 					av.Show();
+
+					ProviderJobsViewController providerJobsView = 
+						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController");
+
+					providerJobsView.ProviderId = ProviderId;
+
+					this.NavigationController.PushViewController(providerJobsView, true);
 				}
 			};
 		}	
@@ -160,6 +166,6 @@ namespace SURGE_iOS
 			}
 
 			#endregion
-	}
+		}
 	}
 }

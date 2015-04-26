@@ -14,7 +14,7 @@ namespace SURGE_iOS
 	{
 		#region Declare Controls
 		UILabel lblHeading, lblSubTitle;
-		UIButton btnNewJob;
+		UIButton btnNewJob, btnHome;
 		UITableView tblJobs;
 		UIScrollView scrollView;
 
@@ -44,12 +44,17 @@ namespace SURGE_iOS
 					, Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
 			lblSubTitle = new UILabel(){Text = "Manage Tasks here", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
-			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 350)};
+			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 320)};
 
 			btnNewJob = UIButton.FromType(UIButtonType.RoundedRect);
 			btnNewJob.Font = UIFont.FromName ("Helvetica", 14f);
-			btnNewJob.Frame = new RectangleF (10, 430, 70, h);
+			btnNewJob.Frame = new RectangleF (10, 405, 65, h);
 			btnNewJob.SetTitle ("New Task", UIControlState.Normal);
+
+			btnHome = UIButton.FromType(UIButtonType.RoundedRect);
+			btnHome.Font = UIFont.FromName ("Helvetica", 14f);
+			btnHome.Frame = new RectangleF (10, 430, 45, h);
+			btnHome.SetTitle ("Home", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
@@ -60,6 +65,7 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblSubTitle);
 			scrollView.AddSubview(tblJobs);
 			scrollView.AddSubview(btnNewJob);
+			scrollView.AddSubview(btnHome);
 
 			View.AddSubview(scrollView);
 
@@ -73,6 +79,12 @@ namespace SURGE_iOS
 
 				this.NavigationController.PushViewController(postJobView, true);
 
+			};
+
+			btnHome.TouchUpInside+= (object sender, EventArgs e) => {
+				HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
+
+				this.NavigationController.PushViewController(homeView, true);
 			};
 
 		}	
@@ -120,18 +132,24 @@ namespace SURGE_iOS
 				DataTable dtNew = dtJobs.Copy ();
 				dtNew.Clear ();
 				foreach (DataRow dr in dtJobs.Rows) {
-					if (dr ["jobStatus"].ToString() == keys[indexPath.Section]) {
+					if (dr ["jobStatus"].ToString () == keys [indexPath.Section]) {
 						DataRow newRow = dtNew.NewRow ();
 						newRow.ItemArray = dr.ItemArray;
 						dtNew.Rows.Add (newRow);
 					}
 				}
 
-					cell.TextLabel.Text = dtNew.Rows [indexPath.Row] ["Title"].ToString ();
+				cell.TextLabel.Text = dtNew.Rows [indexPath.Row] ["Title"].ToString ();
+				cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
 				return cell;
 			}
 
+			public override void WillDisplayHeaderView (UITableView tableView, UIView headerView, nint section)
+			{
+				UITableViewHeaderFooterView header = (UITableViewHeaderFooterView)headerView;
+				header.TextLabel.TextColor = UIColor.FromRGB (0, 44, 84);
+			}
 
 			public override nint RowsInSection (UITableView tableview, nint section)
 			{
@@ -155,12 +173,6 @@ namespace SURGE_iOS
 					}
 				}
 
-//				if (keys [section] == "New") {
-//					ReviewProviderViewController reviewProvider = (ReviewProviderViewController)parentView.Storyboard.InstantiateViewController ("ReviewProviderViewController");
-//					reviewProvider.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
-//					parentView.NavigationController.PushViewController (reviewProvider, true);
-//				}
-
 				if (dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "New") {
 					ReviewProviderViewController reviewProvider = (ReviewProviderViewController)parentView.Storyboard.InstantiateViewController ("ReviewProviderViewController");
 					reviewProvider.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
@@ -170,12 +182,9 @@ namespace SURGE_iOS
 					surgeDetails.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
 					parentView.NavigationController.PushViewController (surgeDetails, true);
 				}
-			}
 
-//			public override string TitleForFooter (UITableView tableView, nint section)
-//			{
-//				return indexedTableItems [keys [section]].Count.ToString () + " items";
-//			}
+				tableView.DeselectRow (indexPath, true);
+			}
 
 			#endregion
 		}

@@ -160,10 +160,23 @@
     <Compile Include="ProviderJobsViewController.designer.cs">
       <DependentUpon>ProviderJobsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuViewController.cs" />
+    <Compile Include="MenuViewController.designer.cs">
+      <DependentUpon>MenuViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeViewController.cs" />
+    <Compile Include="HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskDetailsViewController.cs" />
+    <Compile Include="TaskDetailsViewController.designer.cs">
+      <DependentUpon>TaskDetailsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\TestImg.jpg" />
     <BundleResource Include="Resources\ProfilePic.jpg" />
+    <BundleResource Include="Resources\SurgeLaunch.png" />
   </ItemGroup>
 </Project>

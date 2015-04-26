@@ -223,6 +223,36 @@ namespace SURGE.Common
 
 			return dtJobs;
 		}
+
+		//To get all jobs for Provider
+		public static DataTable GetAllJobsForProvider(int providerId){
+			SqlConnection myCon = new SqlConnection (_cs);
+
+			SqlCommand myCmd = new SqlCommand("SP_GetSetJobs", myCon); 
+			myCmd.CommandType = CommandType.StoredProcedure;
+			myCmd.Parameters.AddWithValue ("@providerId", providerId);
+			myCmd.Parameters.AddWithValue ("@ptype", 5);
+
+			SqlDataAdapter myAdp = new SqlDataAdapter (myCmd);
+			DataTable dtJobs = new DataTable ();
+			myAdp.Fill (dtJobs);
+
+			return dtJobs;
+		}
+
+		//To get all App Users
+		public static DataTable GetAllAppUsers(){
+			SqlConnection myCon = new SqlConnection (_cs);
+
+			SqlCommand myCmd = new SqlCommand("SP_GetAppUsers", myCon); 
+			myCmd.CommandType = CommandType.StoredProcedure;
+
+			SqlDataAdapter myAdp = new SqlDataAdapter (myCmd);
+			DataTable dtUsers = new DataTable ();
+			myAdp.Fill (dtUsers);
+
+			return dtUsers;
+		}
 	}
 }
 

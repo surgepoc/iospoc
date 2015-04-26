@@ -64,6 +64,16 @@ namespace SURGE.Common
 		public static DataTable GetAllJobsForAdmins(int adminId, int hospitalistId, int staffId){
 			return DL.GetAllJobsForAdmins (adminId, hospitalistId, staffId);
 		}
+
+		//To get all jobs for Provider
+		public static DataTable GetAllJobsForProvider(int providerId){
+			return DL.GetAllJobsForProvider (providerId);
+		}
+
+		//To get all App Users
+		public static DataTable GetAllAppUsers(){
+			return DL.GetAllAppUsers ();
+		}
 	}
 }
 

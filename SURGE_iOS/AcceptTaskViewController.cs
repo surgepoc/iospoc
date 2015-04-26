@@ -37,7 +37,7 @@ namespace SURGE_iOS
 
 			#region tempCode
 			if(this.JobId ==0){
-				this.JobId = 33;
+				this.JobId = 1;
 			}
 			ProviderId=1;
 
@@ -53,7 +53,7 @@ namespace SURGE_iOS
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
-			lblJobTitle.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblJobTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnJobDetails = UIButton.FromType(UIButtonType.RoundedRect);
 			btnJobDetails.Font = UIFont.FromName ("Helvetica", 14f);
@@ -62,20 +62,20 @@ namespace SURGE_iOS
 
 			lblBidAmountCaption = new UILabel(){ Text = "Your bid amount", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
 			lblBidAmount = new UILabel(){ Text = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
-			lblBidAmount.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblBidAmount.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblProvidersCaption = new UILabel (){ Text = "Others, who tagged for this job", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
 
-			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 200)};
+			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 170)};
 
 			btnAcceptBid = UIButton.FromType(UIButtonType.RoundedRect);
 			btnAcceptBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnAcceptBid.Frame = new RectangleF (10, 450, 70, h);
+			btnAcceptBid.Frame = new RectangleF (10, 420, 70, h);
 			btnAcceptBid.SetTitle ("Accept Bid", UIControlState.Normal);
 
 			btnRejectBid = UIButton.FromType(UIButtonType.RoundedRect);
 			btnRejectBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnRejectBid.Frame = new RectangleF (10, 485, 70, h);
+			btnRejectBid.Frame = new RectangleF (10, 455, 70, h);
 			btnRejectBid.SetTitle ("Reject Bid", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
@@ -130,6 +130,11 @@ namespace SURGE_iOS
 				if(BL.ChangeJobStatus(JobId, "Inprogress")){
 					av.Show();
 				}
+
+				ProviderJobsViewController providerJobsView = 
+					(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
+
+				this.NavigationController.PushViewController(providerJobsView, true);
 			};
 
 			btnRejectBid.TouchUpInside+= (object sender, EventArgs e) => {
@@ -139,6 +144,11 @@ namespace SURGE_iOS
 				if(BL.ChangeJobStatus(JobId, "New")){
 					av.Show();
 				}
+
+				ProviderJobsViewController providerJobsView = 
+					(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
+
+				this.NavigationController.PushViewController(providerJobsView, true);
 			};
 		}	
 

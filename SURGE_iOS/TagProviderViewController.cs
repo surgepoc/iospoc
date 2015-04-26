@@ -49,7 +49,7 @@ namespace SURGE_iOS
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
-			lblJobTitle.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblJobTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnJobDetails = UIButton.FromType(UIButtonType.RoundedRect);
 			btnJobDetails.Font = UIFont.FromName ("Helvetica", 14f);

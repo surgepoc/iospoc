@@ -42,27 +42,27 @@ namespace SURGE_iOS
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 55, w - 10, h) };
 			txtTitle = new UITextField{ Placeholder = "Enter job title", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 90, w - 10, h) };
-			txtTitle.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblJobDescCaption = new UILabel (){ Text = "Description", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 125, w - 10, h) };
 			txtJobDesc = new UITextField{ Placeholder = "Enter job desc", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 160, w - 10, h) };
-			txtJobDesc.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtJobDesc.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblJobDateCaption = new UILabel (){ Text = "Job Date", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 195, w - 10, h) };
 			txtJobDate = new UITextField{ Placeholder = "mm/dd/yyyy", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 230, w - 10, h) };
-			txtJobDate.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtJobDate.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblJobFromTimeCaption = new UILabel (){ Text = "From Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 265, w - 10, h) };
 			txtFromTime = new UITextField{ Placeholder = "00:00am", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 300, w - 10, h) };
-			txtFromTime.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtFromTime.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblJobToTimeCaption = new UILabel (){ Text = "To Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 335, w - 10, h) };
 			txtToTime = new UITextField{ Placeholder = "00:00pm", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 370, w - 10, h) };
-			txtToTime.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtToTime.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblBudgetCaption = new UILabel (){ Text = "Budget", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 405, w - 10, h) };
 			txtBudget = new UITextField { Placeholder = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 440, w - 10, h) };
-			txtBudget.TextColor = UIColor.FromRGB (81, 115, 137);
+			txtBudget.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblForBusinessCaption = new UILabel (){ Text = "For Business", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 475, w - 10, h) };
 			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 510,  w - 10, h) };

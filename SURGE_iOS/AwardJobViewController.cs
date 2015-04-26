@@ -51,7 +51,7 @@ namespace SURGE_iOS
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
-			lblJobTitle.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblJobTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnJobDetails = UIButton.FromType(UIButtonType.RoundedRect);
 			btnJobDetails.Font = UIFont.FromName ("Helvetica", 14f);
@@ -65,14 +65,14 @@ namespace SURGE_iOS
 			lblProviderNameCaption = new UILabel() { Text = "Name", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 265, w - 10, h) };
 
 			lblProviderName = new UILabel() { Text = "Provider name comes here", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 285, w - 10, h) };
-			lblProviderName.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblProviderName.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblRating =  new UILabel() { Text = "***", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 305, w - 10, h) };
 
 			lblBidAmountCaption =  new UILabel() { Text = "Bid Amount", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 340, w - 10, h) };
 
 			lblBidAmount =  new UILabel() { Text = "$400", Font=UIFont.FromName("Helvetica", 16), Frame = new RectangleF (10, 360, w - 10, h) };
-			lblBidAmount.TextColor = UIColor.FromRGB (81, 125, 137);
+			lblBidAmount.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnAwardJob = UIButton.FromType(UIButtonType.RoundedRect);
 			btnAwardJob.Font = UIFont.FromName ("Helvetica", 14f);
