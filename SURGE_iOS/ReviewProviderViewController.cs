@@ -126,6 +126,12 @@ namespace SURGE_iOS
 				PostJobViewController postNewTask = (PostJobViewController) this.Storyboard.InstantiateViewController("PostJobViewController");
 				this.NavigationController.PushViewController(postNewTask, true);
 			};
+
+			btnJobDetails.TouchUpInside+= (object sender, EventArgs e) => {
+				TaskDetailsViewController taskDetailsView = (TaskDetailsViewController) this.Storyboard.InstantiateViewController("TaskDetailsViewController");
+				taskDetailsView.JobId = JobId;
+				this.NavigationController.PushViewController(taskDetailsView, true);
+			};
 		}
 
 		class ProviderTableSource: UITableViewSource
