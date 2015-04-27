@@ -69,13 +69,13 @@ namespace SURGE_iOS
 
 			btnAcceptBid = UIButton.FromType(UIButtonType.RoundedRect);
 			btnAcceptBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnAcceptBid.Frame = new RectangleF (10, 420, 70, h);
-			btnAcceptBid.SetTitle ("Accept Bid", UIControlState.Normal);
+			btnAcceptBid.Frame = new RectangleF (10, 420, 90, h);
+			btnAcceptBid.SetTitle ("Accept Task", UIControlState.Normal);
 
 			btnRejectBid = UIButton.FromType(UIButtonType.RoundedRect);
 			btnRejectBid.Font = UIFont.FromName ("Helvetica", 14f);
-			btnRejectBid.Frame = new RectangleF (10, 455, 70, h);
-			btnRejectBid.SetTitle ("Reject Bid", UIControlState.Normal);
+			btnRejectBid.Frame = new RectangleF (10, 455, 90, h);
+			btnRejectBid.SetTitle ("Decline Task", UIControlState.Normal);
 
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),

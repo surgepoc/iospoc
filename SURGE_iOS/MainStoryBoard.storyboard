@@ -143,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </navigationBar>
                     <connections>
-                        <segue id="2093" destination="2073" kind="relationship" relationship="rootViewController"/>
+                        <segue id="2169" destination="2073" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="338" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,5 +269,32 @@
         <image name="ProfileDefault.png" width="128" height="128"/>
         <image name="ProfilePic.jpg" width="128" height="128"/>
         <image name="SurgeLaunch.png" width="708" height="714"/>
+        <image name="doctor1.jpg" width="128" height="128"/>
+        <image name="doctor2.jpg" width="128" height="128"/>
+        <image name="doctor3.jpg" width="128" height="128"/>
+        <image name="doctor4.jpg" width="128" height="128"/>
+        <image name="doctor5.jpg" width="128" height="128"/>
+        <image name="icons/accept.png" width="128" height="128"/>
+        <image name="icons/approve.png" width="128" height="128"/>
+        <image name="icons/award.png" width="128" height="128"/>
+        <image name="icons/cancel.png" width="128" height="128"/>
+        <image name="icons/processs.png" width="128" height="128"/>
+        <image name="icons/rate.png" width="128" height="128"/>
+        <image name="icons/reject.png" width="128" height="128"/>
+        <image name="icons/submit.png" width="128" height="128"/>
+        <image name="icons/tag.png" width="128" height="128"/>
+        <image name="icons/view.png" width="128" height="128"/>
+        <image name="admin2.jpg" width="128" height="128"/>
+        <image name="admin3.jpg" width="128" height="128"/>
+        <image name="admin1.jpg" width="128" height="128"/>
+        <image name="icons/bid.png" width="128" height="128"/>
+        <image name="Splash/320_480.png" width="320" height="480"/>
+        <image name="Splash/512_512.png" width="512" height="512"/>
+        <image name="Splash/640_960.png" width="640" height="960"/>
+        <image name="Splash/640_1136.png" width="640" height="1136"/>
+        <image name="Splash/1024_1024.png" width="1024" height="1024"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="Default-568h.png" width="640" height="1136"/>
+        <image name="640_960.png" width="640" height="960"/>
     </resources>
 </document>
