@@ -112,6 +112,22 @@ namespace SURGE_iOS
 				taskDetailsView.JobId = JobId;
 				this.NavigationController.PushViewController(taskDetailsView, true);
 			};
+
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem("Review Providers", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					ReviewProviderViewController reviewProviders = (ReviewProviderViewController) this.Storyboard.InstantiateViewController("ReviewProviderViewController");
+					reviewProviders.JobId = JobId;
+					this.NavigationController.PushViewController(reviewProviders, true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
+					this.NavigationController.PushViewController(homeView, true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 		class ProviderTableSource: UITableViewSource

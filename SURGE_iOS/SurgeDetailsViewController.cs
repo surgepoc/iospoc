@@ -198,6 +198,32 @@ namespace SURGE_iOS
 				taskDetailsView.JobId = JobId;
 				this.NavigationController.PushViewController(taskDetailsView, true);
 			};
+
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem(actionType, UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					if(actionType == "Approve Task"){
+
+						UIAlertView av = new UIAlertView("Task Status",
+							"Task completed successfully", null, "OK");
+
+						if(BL.ChangeJobStatus(JobId, "Completed")){
+							av.Show();
+						}
+
+						AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+
+						this.NavigationController.PushViewController(adminJobsView, true);
+					}
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
+					this.NavigationController.PushViewController(homeView, true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 		string GetRating(int rateCount){

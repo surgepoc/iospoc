@@ -14,7 +14,6 @@ namespace SURGE_iOS
 		// class-level declarations
 		UIWindow window;
 		public static UIStoryboard storyBoard = UIStoryboard.FromName("MainStoryBoard", null);
-//		public UIViewController viewController;
 
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
@@ -23,16 +22,15 @@ namespace SURGE_iOS
 
 			var navigationController = storyBoard.InstantiateInitialViewController () as NavigationViewController;
 			navigationController.NavigationBar.TintColor = UIColor.White;
-//			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (81, 115, 137);
 			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 44, 84);
+			navigationController.Toolbar.Hidden = false;
 			navigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
 			{
 				ForegroundColor = UIColor.White
 			};
 
-			// If you have defined a root view controller, set it here:
 			window.RootViewController = navigationController;
-			
+
 			// make the window visible
 			window.MakeKeyAndVisible ();
 			

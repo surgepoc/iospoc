@@ -87,6 +87,20 @@ namespace SURGE_iOS
 				this.NavigationController.PushViewController(homeView, true);
 			};
 
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem(UIBarButtonSystemItem.Add, (s,e) => {
+					PostJobViewController postJobView = (PostJobViewController) this.Storyboard.InstantiateViewController("PostJobViewController");
+					this.NavigationController.PushViewController(postJobView, true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
+					this.NavigationController.PushViewController(homeView, true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}	
 
 		class ProviderTableSource: UITableViewSource

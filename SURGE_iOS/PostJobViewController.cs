@@ -274,6 +274,48 @@ namespace SURGE_iOS
 				textField.ResignFirstResponder ();
 				return true; 
 			});
+
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem(UIBarButtonSystemItem.Save, (s,e) => {
+					Types.Job newJob = new Types.Job();
+					newJob.Title = txtTitle.Text;
+					newJob.JobDesc = txtJobDesc.Text;
+					newJob.JobStartDate = DateTime.Parse( txtJobDate.Text);
+					newJob.JobStartTime = txtFromTime.Text;
+					newJob.JobEndTime = txtToTime.Text;
+					newJob.Budget = float.Parse(txtBudget.Text);
+					newJob.ForHospital = swtchForBusiness.On;
+					newJob.CreatorId = 1;
+					newJob.CreatorType = "Hospitalist";
+
+					DataTable dtNewJob = new DataTable();
+					dtNewJob = BL.PostJob(newJob);
+
+					if(dtNewJob.Rows.Count>0){
+						var av = new UIAlertView("Post Status", "New Job Posted successfully",null,"OK");
+						av.Show();
+						ClearForm();
+
+						//Redirect to Tag Providers
+						var tagProviderView = (TagProviderViewController) this.Storyboard.InstantiateViewController("TagProviderViewController") ;
+						tagProviderView.JobId = Int32.Parse(dtNewJob.Rows[0][0].ToString());
+
+
+						this.NavigationController.PushViewController(tagProviderView, true);
+					}
+					else{
+						var av = new UIAlertView("Post Status", "Some thing went wrong in creating new job", null, "OK");
+						av.Show();
+					}
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) { Width = 50 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+					this.NavigationController.PushViewController(adminJobsView, true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 		#region Job Date, From Time & To Time Done and Cancel delegates

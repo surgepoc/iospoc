@@ -145,6 +145,7 @@ namespace SURGE_iOS
 					ProviderJobsViewController providerTaskView = (ProviderJobsViewController)parentView.Storyboard.InstantiateViewController ("ProviderJobsViewController");
 					providerTaskView.ProviderId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
 					parentView.NavigationController.PushViewController (providerTaskView, true);
+
 				} else {
 					AdminJobsViewController adminJobsView = (AdminJobsViewController)parentView.Storyboard.InstantiateViewController ("AdminJobsViewController");
 //					adminJobsView.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
