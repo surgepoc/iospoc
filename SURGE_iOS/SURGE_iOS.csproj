@@ -178,5 +178,40 @@
     <BundleResource Include="Resources\TestImg.jpg" />
     <BundleResource Include="Resources\ProfilePic.jpg" />
     <BundleResource Include="Resources\SurgeLaunch.png" />
+    <BundleResource Include="Resources\doctor1.jpg" />
+    <BundleResource Include="Resources\doctor2.jpg" />
+    <BundleResource Include="Resources\doctor3.jpg" />
+    <BundleResource Include="Resources\doctor4.jpg" />
+    <BundleResource Include="Resources\doctor5.jpg" />
+    <BundleResource Include="Resources\icons\accept.png" />
+    <BundleResource Include="Resources\icons\approve.png" />
+    <BundleResource Include="Resources\icons\award.png" />
+    <BundleResource Include="Resources\icons\cancel.png" />
+    <BundleResource Include="Resources\icons\processs.png" />
+    <BundleResource Include="Resources\icons\rate.png" />
+    <BundleResource Include="Resources\icons\reject.png" />
+    <BundleResource Include="Resources\icons\submit.png" />
+    <BundleResource Include="Resources\icons\tag.png" />
+    <BundleResource Include="Resources\icons\view.png" />
+    <BundleResource Include="Resources\admin2.jpg" />
+    <BundleResource Include="Resources\admin3.jpg" />
+    <BundleResource Include="Resources\admin1.jpg" />
+    <BundleResource Include="Resources\icons\bid.png" />
+    <BundleResource Include="Resources\Splash\320_480.png" />
+    <BundleResource Include="Resources\Splash\512_512.png" />
+    <BundleResource Include="Resources\Splash\640_960.png" />
+    <BundleResource Include="Resources\Splash\640_1136.png" />
+    <BundleResource Include="Resources\Splash\1024_1024.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\icons\" />
+    <Folder Include="Resources\Splash\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

@@ -120,7 +120,7 @@ namespace SURGE_iOS
 			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
+				string taskStatus = keys [indexPath.Section];
 
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Default, cellIdentifier);
@@ -133,6 +133,18 @@ namespace SURGE_iOS
 						newRow.ItemArray = dr.ItemArray;
 						dtNew.Rows.Add (newRow);
 					}
+				}
+
+				if (taskStatus == "New" || taskStatus == "Invited") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/bid.png");
+				} else if (taskStatus == "Awarded") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/accept.png");
+				} else if (taskStatus == "Inprogress") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
+				} else if (taskStatus == "Submitted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
+				} else if (taskStatus == "Completed") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
 				}
 
 				cell.TextLabel.Text = dtNew.Rows [indexPath.Row] ["Title"].ToString ();
@@ -184,6 +196,7 @@ namespace SURGE_iOS
 					SubmitTaskViewController submitTaskView = (SubmitTaskViewController)parentView.Storyboard.InstantiateViewController ("SubmitTaskViewController");
 					submitTaskView.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ());
 					submitTaskView.ProviderId = providerId;
+//					parentView.PresentViewController (submitTaskView, true, null);
 					parentView.NavigationController.PushViewController (submitTaskView, true);
 				}
 

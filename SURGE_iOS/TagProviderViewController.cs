@@ -135,7 +135,7 @@ namespace SURGE_iOS
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 
-				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
+				cell.ImageView.Image = UIImage.FromBundle (dtProviders.Rows [indexPath.Row] ["ProfilePic"].ToString ());
 				cell.TextLabel.Text = dtProviders.Rows [indexPath.Row] ["Name"].ToString ();
 				cell.DetailTextLabel.Text = GetRating(Int32.Parse(dtProviders.Rows [indexPath.Row] ["Rating"].ToString ()));
 				cell.Accessory = UITableViewCellAccessory.Checkmark;

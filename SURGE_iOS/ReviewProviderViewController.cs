@@ -156,7 +156,7 @@ namespace SURGE_iOS
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
 
-				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
+				cell.ImageView.Image = UIImage.FromBundle (dtProvidersTagged.Rows [indexPath.Row] ["ProfilePic"].ToString ());
 				cell.TextLabel.Text = dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString ();
 				cell.DetailTextLabel.Text = "$" + dtProvidersTagged.Rows [indexPath.Row] ["BidAmount"].ToString ();
 

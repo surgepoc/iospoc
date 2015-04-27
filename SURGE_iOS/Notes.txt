@@ -1,8 +1,16 @@
 ﻿Task States
 
 State		Admin		Provider
-New			Review			Bid
+New			Review		Bid
 Awarded		View		Accept_Decline
 Inprogress	View		View
 Submitted	Approve		Rate
 Completed	View		View
+
+
+Known Issues
+------------
+1. Rate functionality
+2. Tab bar based actions for Admin and Provider
+3. Showing modals for Tag, Approve, Bid, Accept, Submit and Surge Details
+4. New Task page date and time picker sophistication

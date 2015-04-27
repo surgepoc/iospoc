@@ -124,7 +124,7 @@ namespace SURGE_iOS
 			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 			{
 				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
-
+				string taskStatus = keys [indexPath.Section];
 
 				if (cell == null)
 					cell = new UITableViewCell (UITableViewCellStyle.Default, cellIdentifier);
@@ -137,6 +137,19 @@ namespace SURGE_iOS
 						newRow.ItemArray = dr.ItemArray;
 						dtNew.Rows.Add (newRow);
 					}
+				}
+
+
+				if (taskStatus == "New") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/tag.png");
+				} else if (taskStatus == "Awarded") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/award.png");
+				} else if (taskStatus == "Inprogress") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
+				} else if (taskStatus == "Submitted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/approve.png");
+				} else if (taskStatus == "Completed") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
 				}
 
 				cell.TextLabel.Text = dtNew.Rows [indexPath.Row] ["Title"].ToString ();

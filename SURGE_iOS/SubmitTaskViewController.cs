@@ -120,6 +120,8 @@ namespace SURGE_iOS
 					(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
 
 				this.NavigationController.PushViewController(providerJobsView, true);
+
+//				this.DismissViewController(true, null);
 			};
 
 			btnJobDetails.TouchUpInside+= (object sender, EventArgs e) => {

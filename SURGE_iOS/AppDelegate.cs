@@ -27,7 +27,7 @@ namespace SURGE_iOS
 			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 44, 84);
 			navigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
 			{
-				ForegroundColor = UIColor.White,
+				ForegroundColor = UIColor.White
 			};
 
 			// If you have defined a root view controller, set it here:
@@ -38,6 +38,8 @@ namespace SURGE_iOS
 			
 			return true;
 		}
+
+
 	}
 }
 
