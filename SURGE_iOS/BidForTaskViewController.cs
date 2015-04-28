@@ -142,8 +142,8 @@ namespace SURGE_iOS
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem("Bid Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
-					UIAlertView av = new UIAlertView("Bid for Task",
-						"Congrats, you successfully bid for this task for $" + txtBidAmount.Text,null, "OK");
+					UIAlertView av = new UIAlertView("Task Status",
+						"Tash has been bid",null, "OK");
 
 					if(	BL.BidTaskByProvider(JobId, ProviderId, Int32.Parse(txtBidAmount.Text))){
 						av.Show();

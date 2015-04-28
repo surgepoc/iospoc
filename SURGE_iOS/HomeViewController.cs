@@ -24,7 +24,7 @@ namespace SURGE_iOS
 		#region Constructor
 		public HomeViewController (IntPtr handle) : base (handle)
 		{
-			this.Title = "Home";
+			this.Title = "SURGE";
 		}
 		#endregion Constructor
 

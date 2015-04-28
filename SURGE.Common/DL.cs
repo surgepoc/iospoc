@@ -7,9 +7,10 @@ namespace SURGE.Common
 {
 	public class DL
 	{
+//		private static string _cs = 
+//			"Data Source = madhurams.co.in; Initial Catalog = surgepoc; user id = surgepoc; password = Sairam123%";
 		private static string _cs = 
-			"Data Source = madhurams.co.in; Initial Catalog = surgepoc; user id = surgepoc; password = Sairam123%";
-
+			"Data Source = surgepoc.db.9526462.hostedresource.com; Initial Catalog = surgepoc; user id = surgepoc; password = Sairam123%";
 		public DL ()
 		{
 		}

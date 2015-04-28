@@ -120,9 +120,10 @@ namespace SURGE_iOS
 					reviewProviders.JobId = JobId;
 					this.NavigationController.PushViewController(reviewProviders, true);
 				})
-				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
-				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					this.NavigationController.PopViewController(true);
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
+				, new UIBarButtonItem("Home", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					AdminJobsViewController adminJobsView = (AdminJobsViewController)this.Storyboard.InstantiateViewController("AdminJobsViewController");
+					this.NavigationController.PushViewController(adminJobsView, true);
 				})
 			}, false);
 
@@ -190,8 +191,7 @@ namespace SURGE_iOS
 			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
 				
-				UIAlertView av = new UIAlertView ("Provider Tagged",
-					                 dtProviders.Rows [indexPath.Row] ["Id"].ToString () + "." + dtProviders.Rows [indexPath.Row] ["Name"].ToString (),
+				UIAlertView av = new UIAlertView ("Tag Status","Provider has been tagged",
 					                 null,
 					                 "OK");
 

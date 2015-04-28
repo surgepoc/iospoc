@@ -83,11 +83,13 @@ namespace SURGE_iOS
 
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
-				new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					this.NavigationController.PopViewController(true);
+				new UIBarButtonItem("", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
 				})
-				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
-				,  new UIBarButtonItem("", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
+				, new UIBarButtonItem("Home", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					HomeViewController homeJobsView = (HomeViewController)this.Storyboard.InstantiateViewController("HomeViewController");
+					this.NavigationController.PushViewController(homeJobsView, true);
+				})
 			}, false);
 
 			this.NavigationController.ToolbarHidden = false;

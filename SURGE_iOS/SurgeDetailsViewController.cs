@@ -181,7 +181,7 @@ namespace SURGE_iOS
 				if(actionType == "Approve Task"){
 
 					UIAlertView av = new UIAlertView("Task Status",
-						"Task completed successfully", null, "OK");
+						"Task has been approved", null, "OK");
 					
 					if(BL.ChangeJobStatus(JobId, "Completed")){
 						av.Show();
@@ -205,7 +205,7 @@ namespace SURGE_iOS
 					if(actionType == "Approve Task"){
 
 						UIAlertView av = new UIAlertView("Task Status",
-							"Task completed successfully", null, "OK");
+							"Task has been approved", null, "OK");
 
 						if(BL.ChangeJobStatus(JobId, "Completed")){
 							av.Show();

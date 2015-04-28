@@ -163,8 +163,7 @@ namespace SURGE_iOS
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem("Award Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
-					UIAlertView av = new UIAlertView("Task Awarded",
-						lblProviderName.Text + " is awarded task for bid amount $" + lblBidAmount.Text,null, "OK");
+					UIAlertView av = new UIAlertView("Task Status","Task has been awarded",null, "OK");
 
 					if(BL.AwardJob(JobId, ProviderId)){
 						av.Show();

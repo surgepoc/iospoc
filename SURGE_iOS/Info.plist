@@ -34,5 +34,14 @@
 	<string>LaunchScreen</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Splash/57_57</string>
+		<string>Splash/114_114</string>
+		<string>Splash/120_120</string>
+		<string>Splash/29_29</string>
+		<string>Splash/58_58</string>
+		<string>Splash/80_80</string>
+	</array>
 </dict>
 </plist>

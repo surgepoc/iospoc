@@ -94,8 +94,9 @@ namespace SURGE_iOS
 					this.NavigationController.PushViewController(postJobView, true);
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
-				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					this.NavigationController.PopViewController(true);
+				, new UIBarButtonItem("Home", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					HomeViewController homeJobsView = (HomeViewController)this.Storyboard.InstantiateViewController("HomeViewController");
+					this.NavigationController.PushViewController(homeJobsView, true);
 				})
 			}, false);
 

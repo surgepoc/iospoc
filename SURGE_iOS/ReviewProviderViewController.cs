@@ -140,9 +140,10 @@ namespace SURGE_iOS
 					tagProviders.JobId = JobId;
 					this.NavigationController.PushViewController(tagProviders, true);
 				})
-				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
-				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					this.NavigationController.PopViewController(true);
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
+				, new UIBarButtonItem("Home", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					AdminJobsViewController adminJobsView = (AdminJobsViewController)this.Storyboard.InstantiateViewController("AdminJobsViewController");
+					this.NavigationController.PushViewController(adminJobsView, true);
 				})
 			}, false);
 

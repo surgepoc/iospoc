@@ -157,8 +157,8 @@ namespace SURGE_iOS
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem(actionType, UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
 					if(actionType=="Submit Task"){
-					UIAlertView av = new UIAlertView("Task Submitted",
-						"Congrats on submitting your task",null, "OK");
+					UIAlertView av = new UIAlertView("Task Status",
+						"Task has been submitted",null, "OK");
 
 					if((BL.ChangeJobStatus(JobId, "Submitted"))){
 						av.Show();

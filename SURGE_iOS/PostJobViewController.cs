@@ -223,7 +223,7 @@ namespace SURGE_iOS
 				dtNewJob = BL.PostJob(newJob);
 
 				if(dtNewJob.Rows.Count>0){
-					var av = new UIAlertView("Post Status", "New Job Posted successfully",null,"OK");
+					var av = new UIAlertView("Task Status", "Task has been posted",null,"OK");
 					av.Show();
 					ClearForm();
 
@@ -235,7 +235,7 @@ namespace SURGE_iOS
 					this.NavigationController.PushViewController(tagProviderView, true);
 				}
 				else{
-					var av = new UIAlertView("Post Status", "Some thing went wrong in creating new job", null, "OK");
+					var av = new UIAlertView("Task Status", "Some thing went wrong", null, "OK");
 					av.Show();
 				}
 			};
@@ -294,7 +294,7 @@ namespace SURGE_iOS
 					dtNewJob = BL.PostJob(newJob);
 
 					if(dtNewJob.Rows.Count>0){
-						var av = new UIAlertView("Post Status", "New Job Posted successfully",null,"OK");
+						var av = new UIAlertView("Task Status", "Task has been posted",null,"OK");
 						av.Show();
 						ClearForm();
 
@@ -306,7 +306,7 @@ namespace SURGE_iOS
 						this.NavigationController.PushViewController(tagProviderView, true);
 					}
 					else{
-						var av = new UIAlertView("Post Status", "Some thing went wrong in creating new job", null, "OK");
+						var av = new UIAlertView("Task Status", "Some thing went wrong", null, "OK");
 						av.Show();
 					}
 				})

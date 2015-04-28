@@ -159,8 +159,8 @@ namespace SURGE_iOS
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem("Accept Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
-					UIAlertView av = new UIAlertView("Task Accepted",
-						"Congrats on your new task", null, "OK");
+					UIAlertView av = new UIAlertView("Task Status",
+						"Task has been accepted", null, "OK");
 
 					if(BL.ChangeJobStatus(JobId, "Inprogress")){
 						av.Show();
@@ -173,8 +173,8 @@ namespace SURGE_iOS
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
 				, new UIBarButtonItem("Decline Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
-					UIAlertView av = new UIAlertView("Task Declined",
-						"No Problem, we will let you know other tasks", null, "OK");
+					UIAlertView av = new UIAlertView("Task Status",
+						"Task has been declined", null, "OK");
 
 					if(BL.ChangeJobStatus(JobId, "New")){
 						av.Show();
