@@ -56,9 +56,9 @@ namespace SURGE_iOS
 			btnJobDetails.Frame = new RectangleF (10, 130, 140, h);
 			btnJobDetails.SetTitle ("Click for full job details", UIControlState.Normal);
 
-			lblProvidersCaption = new UILabel (){ Text = "Click on below providers to tag", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
+			lblProvidersCaption = new UILabel (){ Text = "Select a Provider to tag for this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
 
-			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 200, w - 10, 200)};
+			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 200, w - 10, 300)};
 
 			btnTaskList = UIButton.FromType(UIButtonType.RoundedRect);
 			btnTaskList.Font = UIFont.FromName ("Helvetica", 14f);
@@ -77,7 +77,7 @@ namespace SURGE_iOS
 			scrollView.AddSubview(btnJobDetails);
 			scrollView.AddSubview(lblProvidersCaption);
 			scrollView.AddSubview(tblProviders);
-			scrollView.AddSubview(btnTaskList);
+//			scrollView.AddSubview(btnTaskList);
 
 			View.AddSubview(scrollView);
 
@@ -122,8 +122,7 @@ namespace SURGE_iOS
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
 				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
-					this.NavigationController.PushViewController(homeView, true);
+					this.NavigationController.PopViewController(true);
 				})
 			}, false);
 

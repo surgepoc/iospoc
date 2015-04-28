@@ -26,7 +26,7 @@ namespace SURGE_iOS
 		#region Constructor
 		public BidForTaskViewController (IntPtr handle) : base (handle)
 		{
-			this.Title = "Bid for Task";
+			this.Title = "Bid Task";
 		}
 		#endregion Constructor
 
@@ -45,7 +45,7 @@ namespace SURGE_iOS
 			w = float.Parse (View.Frame.Width.ToString ());
 
 			#region Instantiate Controls
-			lblHeading = new UILabel(){Text = "Bid for Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblHeading = new UILabel(){Text = "Bid Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
 			lblSubTitle = new UILabel(){Text = "Submit your bid for this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
@@ -57,11 +57,11 @@ namespace SURGE_iOS
 			btnJobDetails.Frame = new RectangleF (10, 130, 140, h);
 			btnJobDetails.SetTitle ("Click for full job details", UIControlState.Normal);
 
-			lblBidAmountCaption = new UILabel(){ Text = "Your bid amount", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
+			lblBidAmountCaption = new UILabel(){ Text = "Enter your bid", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
 			txtBidAmount = new UITextField(){ Placeholder = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
 			txtBidAmount.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblProvidersCaption = new UILabel (){ Text = "Others, who tagged for this job", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
+			lblProvidersCaption = new UILabel (){ Text = "Other bids for this task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
 
 			tblProviders = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 250, w - 10, 170)};
 
@@ -89,8 +89,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview(txtBidAmount);
 			scrollView.AddSubview(lblProvidersCaption);
 			scrollView.AddSubview(tblProviders);
-			scrollView.AddSubview(btnSubmitBid);
-			scrollView.AddSubview(btnCancel);
+//			scrollView.AddSubview(btnSubmitBid);
+//			scrollView.AddSubview(btnCancel);
 
 
 			View.AddSubview(scrollView);
@@ -138,6 +138,32 @@ namespace SURGE_iOS
 				taskDetailsView.JobId = JobId;
 				this.NavigationController.PushViewController(taskDetailsView, true);
 			};
+
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem("Bid Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					UIAlertView av = new UIAlertView("Bid for Task",
+						"Congrats, you successfully bid for this task for $" + txtBidAmount.Text,null, "OK");
+
+					if(	BL.BidTaskByProvider(JobId, ProviderId, Int32.Parse(txtBidAmount.Text))){
+						av.Show();
+
+					}
+
+					ProviderJobsViewController providerJobsView = 
+						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController");
+
+					providerJobsView.ProviderId = ProviderId;
+
+					this.NavigationController.PushViewController(providerJobsView, true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					this.NavigationController.PopViewController(true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}	
 
 		class ProviderTableSource: UITableViewSource

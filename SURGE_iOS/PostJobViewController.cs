@@ -11,7 +11,7 @@ namespace SURGE_iOS
 	partial class PostJobViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption;
+		UILabel lblHeading, lblsubHeading, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption;
 		UITextField txtTitle, txtJobDesc, txtJobDate, txtFromTime, txtToTime, txtBudget;
 		UISwitch swtchForBusiness;
 		UIScrollView scrollView;
@@ -38,34 +38,35 @@ namespace SURGE_iOS
 			w = float.Parse (View.Frame.Width.ToString ());
 
 			#region Instantiate Controls
-			lblHeading = new UILabel (){ Text = "Post Job", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblHeading = new UILabel (){ Text = "Post New Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblsubHeading = new UILabel (){ Text = "New Surge Task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
-			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 55, w - 10, h) };
-			txtTitle = new UITextField{ Placeholder = "Enter job title", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 90, w - 10, h) };
+			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
+			txtTitle = new UITextField{ Placeholder = "Enter job title", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
 			txtTitle.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblJobDescCaption = new UILabel (){ Text = "Description", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 125, w - 10, h) };
-			txtJobDesc = new UITextField{ Placeholder = "Enter job desc", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 160, w - 10, h) };
+			lblJobDescCaption = new UILabel (){ Text = "Description", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 130, w - 10, h) };
+			txtJobDesc = new UITextField{ Placeholder = "Enter job desc", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 150, w - 10, h) };
 			txtJobDesc.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblJobDateCaption = new UILabel (){ Text = "Job Date", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 195, w - 10, h) };
-			txtJobDate = new UITextField{ Placeholder = "mm/dd/yyyy", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 230, w - 10, h) };
+			lblJobDateCaption = new UILabel (){ Text = "Task Date", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 185, w - 10, h) };
+			txtJobDate = new UITextField{ Placeholder = "mm/dd/yyyy", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 205, w - 10, h) };
 			txtJobDate.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblJobFromTimeCaption = new UILabel (){ Text = "From Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 265, w - 10, h) };
-			txtFromTime = new UITextField{ Placeholder = "00:00am", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 300, w - 10, h) };
+			lblJobFromTimeCaption = new UILabel (){ Text = "Start Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 240, w - 10, h) };
+			txtFromTime = new UITextField{ Placeholder = "00:00am", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 260, w - 10, h) };
 			txtFromTime.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblJobToTimeCaption = new UILabel (){ Text = "To Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 335, w - 10, h) };
-			txtToTime = new UITextField{ Placeholder = "00:00pm", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 370, w - 10, h) };
+			lblJobToTimeCaption = new UILabel (){ Text = "End Time", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 295, w - 10, h) };
+			txtToTime = new UITextField{ Placeholder = "00:00pm", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 315, w - 10, h) };
 			txtToTime.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblBudgetCaption = new UILabel (){ Text = "Budget", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 405, w - 10, h) };
-			txtBudget = new UITextField { Placeholder = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 440, w - 10, h) };
+			lblBudgetCaption = new UILabel (){ Text = "Budget", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 340, w - 10, h) };
+			txtBudget = new UITextField { Placeholder = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 360, w - 10, h) };
 			txtBudget.TextColor = UIColor.FromRGB (0, 44, 84);
 
-			lblForBusinessCaption = new UILabel (){ Text = "For Business", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 475, w - 10, h) };
-			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 510,  w - 10, h) };
+			lblForBusinessCaption = new UILabel (){ Text = "On Behalf of Hospital", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 395, w - 10, h) };
+			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 420,  w - 10, h) };
 
 
 			btnPostJob = UIButton.FromType(UIButtonType.RoundedRect);
@@ -185,6 +186,7 @@ namespace SURGE_iOS
 					
 			//Adding controls to Scroll view as subviews
 			scrollView.AddSubview (lblHeading);
+			scrollView.AddSubview(lblsubHeading);
 			scrollView.AddSubview (lblTitleCaption);
 			scrollView.AddSubview (txtTitle);
 			scrollView.AddSubview (lblJobDescCaption);
@@ -199,7 +201,7 @@ namespace SURGE_iOS
 			scrollView.AddSubview (txtBudget);
 			scrollView.AddSubview (swtchForBusiness);
 			scrollView.AddSubview (lblForBusinessCaption);
-			scrollView.AddSubview (btnPostJob);
+//			scrollView.AddSubview (btnPostJob);
 
 			View.AddSubview (scrollView);
 			#endregion Scroll View
@@ -310,8 +312,7 @@ namespace SURGE_iOS
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) { Width = 50 }
 				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
-					this.NavigationController.PushViewController(adminJobsView, true);
+					this.NavigationController.PopViewController(true);
 				})
 			}, false);
 

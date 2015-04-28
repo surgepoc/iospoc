@@ -21,7 +21,7 @@ namespace SURGE_iOS
 		float h,w;
 		public int JobId{ get; set; }
 		public int ProviderId{ get; set; }
-		DataTable dtProviders;
+		DataTable dtProviders, dtJobDetails;
 
 		#region Constructor
 		public SubmitTaskViewController (IntPtr handle) : base (handle)
@@ -44,6 +44,7 @@ namespace SURGE_iOS
 			h = 30;
 			w = float.Parse (View.Frame.Width.ToString ());
 			dtProviders = BL.GetProvidersInterestedInJob (JobId);
+			dtJobDetails = BL.GetjobDetail (JobId);
 
 			#region Instantiate Controls
 			lblHeading = new UILabel(){Text = "Submit Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
@@ -90,14 +91,31 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblBidAmount);
 			scrollView.AddSubview(lblRemarksCaption);
 			scrollView.AddSubview(txtRemarks);
-			scrollView.AddSubview(btnAction);
-			scrollView.AddSubview(btnCancel);
+//			scrollView.AddSubview(btnAction);
+//			scrollView.AddSubview(btnCancel);
 
 
 			View.AddSubview(scrollView);
 
 
 			#endregion Instantiate Controls
+
+			#region Load Job Details
+			string actionType;
+
+			lblJobTitle.Text = dtJobDetails.Rows[0]["Title"].ToString();
+			if(dtJobDetails.Rows[0]["jobStatus"].ToString() == "Inprogress"){
+				actionType = "Submit Task";
+				lblSubTitle.Text = "You can submit this task if completed";
+			}
+			else{
+				actionType = "Rate Task";
+				lblSubTitle.Text = "You can rate this task after completion";
+			}
+
+			this.Title = actionType;
+			lblHeading.Text = actionType;
+			#endregion
 
 			#region Load his bid
 			foreach(DataRow dr in dtProviders.Rows){
@@ -134,40 +152,65 @@ namespace SURGE_iOS
 				textField.ResignFirstResponder ();
 				return true; 
 			});
-		}	
 
-		class ProviderTableSource: UITableViewSource
-		{
-			DataTable dtProvidersTagged;
-			string cellIdentifier = "TableCell";
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem(actionType, UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					if(actionType=="Submit Task"){
+					UIAlertView av = new UIAlertView("Task Submitted",
+						"Congrats on submitting your task",null, "OK");
 
+					if((BL.ChangeJobStatus(JobId, "Submitted"))){
+						av.Show();
+					}
 
-			public ProviderTableSource(int _jobId, UIViewController _parent, DataTable _dtProviders)
-			{
-				this.dtProvidersTagged = _dtProviders;
-			}
+					ProviderJobsViewController providerJobsView = 
+						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
 
-			#region implemented abstract members of UITableViewSource
-			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
-			{
-				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+					this.NavigationController.PushViewController(providerJobsView, true);
+					}
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					this.NavigationController.PopViewController(true);
+				})
+			}, false);
 
-				if (cell == null)
-					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
-
-				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
-				cell.TextLabel.Text = dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString ();
-				cell.DetailTextLabel.Text = "$" + dtProvidersTagged.Rows [indexPath.Row] ["BidAmount"].ToString ();
-
-				return cell;
-			}
-
-			public override nint RowsInSection (UITableView tableview, nint section)
-			{
-				return dtProvidersTagged.Rows.Count;
-			}
-
-			#endregion
+			this.NavigationController.ToolbarHidden = false;
 		}
+
+//		class ProviderTableSource: UITableViewSource
+//		{
+//			DataTable dtProvidersTagged;
+//			string cellIdentifier = "TableCell";
+//
+//
+//			public ProviderTableSource(int _jobId, UIViewController _parent, DataTable _dtProviders)
+//			{
+//				this.dtProvidersTagged = _dtProviders;
+//			}
+//
+//			#region implemented abstract members of UITableViewSource
+//			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
+//			{
+//				UITableViewCell cell = tableView.DequeueReusableCell (cellIdentifier);
+//
+//				if (cell == null)
+//					cell = new UITableViewCell (UITableViewCellStyle.Value1, cellIdentifier);
+//
+//				cell.ImageView.Image = UIImage.FromBundle ("ProfilePic.jpg");
+//				cell.TextLabel.Text = dtProvidersTagged.Rows [indexPath.Row] ["Name"].ToString ();
+//				cell.DetailTextLabel.Text = "$" + dtProvidersTagged.Rows [indexPath.Row] ["BidAmount"].ToString ();
+//
+//				return cell;
+//			}
+//
+//			public override nint RowsInSection (UITableView tableview, nint section)
+//			{
+//				return dtProvidersTagged.Rows.Count;
+//			}
+//
+//			#endregion
+//		}
 	}
 }

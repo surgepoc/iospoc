@@ -52,7 +52,7 @@ namespace SURGE_iOS
 					, Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
 			lblSubTitle = new UILabel(){Text = "Manage Tasks here", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
-			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 320)};
+			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 400)};
 
 			btnHome = UIButton.FromType(UIButtonType.RoundedRect);
 			btnHome.Font = UIFont.FromName ("Helvetica", 14f);
@@ -67,7 +67,7 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblHeading);
 			scrollView.AddSubview(lblSubTitle);
 			scrollView.AddSubview(tblJobs);
-			scrollView.AddSubview(btnHome);
+//			scrollView.AddSubview(btnHome);
 
 			View.AddSubview(scrollView);
 
@@ -81,6 +81,16 @@ namespace SURGE_iOS
 				this.NavigationController.PushViewController(homeView, true);
 			};
 
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					this.NavigationController.PopViewController(true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				,  new UIBarButtonItem("", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}	
 
 		class ProviderTableSource: UITableViewSource

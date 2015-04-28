@@ -75,7 +75,7 @@ namespace SURGE_iOS
 			lblJobDesc.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			lblJobDateCaption = new UILabel () {
-				Text = "Job Desc",
+				Text = "Job Date",
 				Font = UIFont.FromName ("Helvetica", 12f),
 				Frame = new RectangleF (10, 185, w - 10, h)
 			};
@@ -127,7 +127,7 @@ namespace SURGE_iOS
 				Font = UIFont.FromName ("Helvetica", 12f),
 				Frame = new RectangleF (10, 405, w - 10, h)
 			};
-			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 425, w - 10, h) };
+			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 430, w - 10, h) };
 
 			#endregion Instantiate controls
 
@@ -166,7 +166,7 @@ namespace SURGE_iOS
 				lblJobDate.Text = dtJobDetails.Rows[0]["JobStartDate"].ToString();
 				lblFromTime.Text= Convert.ToDateTime( dtJobDetails.Rows[0]["JobStartTime"].ToString()).ToShortTimeString();
 				lblToTime.Text =Convert.ToDateTime( dtJobDetails.Rows[0]["JobEndTime"].ToString()).ToShortTimeString();
-				lblBudget.Text = dtJobDetails.Rows[0]["Budget"].ToString();
+				lblBudget.Text = "$" + dtJobDetails.Rows[0]["Budget"].ToString();
 				if(bool.Parse(dtJobDetails.Rows[0]["ForHospital"].ToString())){
 					swtchForBusiness.On = true;
 				}
@@ -176,6 +176,18 @@ namespace SURGE_iOS
 			}
 
 			#endregion Load Job Details
+
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem("Done", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					this.NavigationController.PopViewController(true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem("", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 

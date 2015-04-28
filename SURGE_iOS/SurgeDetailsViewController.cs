@@ -56,8 +56,8 @@ namespace SURGE_iOS
 			}
 
 			#region Instantiate Controls
-			lblHeading = new UILabel(){Text = "Surge Details", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
-			lblSubTitle = new UILabel(){Text = "Check below current status of this Surge task", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
+			lblHeading = new UILabel(){Text = "Surge Task Details", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
+			lblSubTitle = new UILabel(){Text = "Review task and take action", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
@@ -119,8 +119,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblBidAmount);
 			scrollView.AddSubview(lblTaskStatusCaption);
 			scrollView.AddSubview(lblTaskStatus);
-			scrollView.AddSubview(btnDynAction);
-			scrollView.AddSubview(btnCancel);
+//			scrollView.AddSubview(btnDynAction);
+//			scrollView.AddSubview(btnCancel);
 
 			View.AddSubview(scrollView);
 
@@ -173,7 +173,7 @@ namespace SURGE_iOS
 
 				lblRating.Text = GetRating(Int32.Parse(dtProvider.Rows[0]["Rating"].ToString()));
 
-				lblBidAmount.Text = dtProvider.Rows[0]["BidAmount"].ToString();
+				lblBidAmount.Text = "$" +  dtProvider.Rows[0]["BidAmount"].ToString();
 			}
 			#endregion Load Provider Details
 
@@ -218,8 +218,7 @@ namespace SURGE_iOS
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
 				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
-					this.NavigationController.PushViewController(homeView, true);
+					this.NavigationController.PopViewController(true);
 				})
 			}, false);
 

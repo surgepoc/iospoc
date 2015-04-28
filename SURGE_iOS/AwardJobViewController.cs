@@ -47,7 +47,7 @@ namespace SURGE_iOS
 
 			#region Instantiate Controls
 			lblHeading = new UILabel(){Text = "Award Task", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
-			lblSubTitle = new UILabel(){Text = "Award this Surge Task to this provider", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
+			lblSubTitle = new UILabel(){Text = "Award Task to this provider", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			lblTitleCaption = new UILabel (){ Text = "Title", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 75, w - 10, h) };
 			lblJobTitle = new UILabel(){Text="Job title goes here...", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 95, w - 10, h) };
@@ -102,8 +102,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblRating);
 			scrollView.AddSubview(lblBidAmountCaption);
 			scrollView.AddSubview(lblBidAmount);
-			scrollView.AddSubview(btnAwardJob);
-			scrollView.AddSubview(btnReviewProviders);
+//			scrollView.AddSubview(btnAwardJob);
+//			scrollView.AddSubview(btnReviewProviders);
 
 			View.AddSubview(scrollView);
 
@@ -136,7 +136,7 @@ namespace SURGE_iOS
 
 				lblRating.Text = GetRating(Int32.Parse(dtProvider.Rows[0]["Rating"].ToString()));
 
-				lblBidAmount.Text = dtProvider.Rows[0]["BidAmount"].ToString();
+				lblBidAmount.Text = "$" + dtProvider.Rows[0]["BidAmount"].ToString();
 			}
 			#endregion Load Provider Details
 
@@ -159,6 +159,27 @@ namespace SURGE_iOS
 			};
 
 			#endregion AwardJob
+
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem("Award Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+					UIAlertView av = new UIAlertView("Task Awarded",
+						lblProviderName.Text + " is awarded task for bid amount $" + lblBidAmount.Text,null, "OK");
+
+					if(BL.AwardJob(JobId, ProviderId)){
+						av.Show();
+					}
+
+					AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+					this.NavigationController.PushViewController(adminJobsView, true);
+				})
+				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
+				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
+					this.NavigationController.PopViewController(true);
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 		string GetRating(int rateCount){

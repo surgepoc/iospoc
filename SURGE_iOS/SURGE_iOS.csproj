@@ -25,6 +25,8 @@
     <MtouchProfiling>true</MtouchProfiling>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>west</MtouchI18n>
+    <CodesignProvision>fa9e6e56-6ff5-4824-9ce5-73003160db79</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Streamlined Medical Solutions, LLC (V9584S5W69)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -52,6 +54,8 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>west</MtouchI18n>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -77,6 +81,10 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <BuildIpa>true</BuildIpa>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>west</MtouchI18n>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>full</DebugType>
@@ -112,6 +120,7 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="Notes.txt" />
+    <None Include="DBScripts\DBScript_April282015.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -209,6 +218,7 @@
   <ItemGroup>
     <Folder Include="Resources\icons\" />
     <Folder Include="Resources\Splash\" />
+    <Folder Include="DBScripts\" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

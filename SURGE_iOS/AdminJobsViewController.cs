@@ -42,9 +42,9 @@ namespace SURGE_iOS
 			#region Instantiate Controls
 			lblHeading = new UILabel(){Text = "Task List - " + ((dtJobs.Rows.Count>0)?dtJobs.Rows.Count.ToString():"0")
 					, Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
-			lblSubTitle = new UILabel(){Text = "Manage Tasks here", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
+			lblSubTitle = new UILabel(){Text = "Manage Tasks", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
-			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 320)};
+			tblJobs = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 400)};
 
 			btnNewJob = UIButton.FromType(UIButtonType.RoundedRect);
 			btnNewJob.Font = UIFont.FromName ("Helvetica", 14f);
@@ -64,8 +64,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview(lblHeading);
 			scrollView.AddSubview(lblSubTitle);
 			scrollView.AddSubview(tblJobs);
-			scrollView.AddSubview(btnNewJob);
-			scrollView.AddSubview(btnHome);
+//			scrollView.AddSubview(btnNewJob);
+//			scrollView.AddSubview(btnHome);
 
 			View.AddSubview(scrollView);
 
@@ -95,8 +95,7 @@ namespace SURGE_iOS
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 50 }
 				, new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (s,e) => {
-					HomeViewController homeView = (HomeViewController) this.Storyboard.InstantiateViewController("HomeViewController");
-					this.NavigationController.PushViewController(homeView, true);
+					this.NavigationController.PopViewController(true);
 				})
 			}, false);
 
