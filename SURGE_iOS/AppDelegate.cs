@@ -24,6 +24,7 @@ namespace SURGE_iOS
 			navigationController.NavigationBar.TintColor = UIColor.White;
 			navigationController.NavigationBar.BarTintColor = UIColor.FromRGB (0, 44, 84);
 			navigationController.Toolbar.Hidden = false;
+			navigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 			navigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
 			{
 				ForegroundColor = UIColor.White
@@ -33,7 +34,8 @@ namespace SURGE_iOS
 
 			// make the window visible
 			window.MakeKeyAndVisible ();
-			
+//			app.SetStatusBarStyle (UIStatusBarStyle.LightContent, true);
+
 			return true;
 		}
 

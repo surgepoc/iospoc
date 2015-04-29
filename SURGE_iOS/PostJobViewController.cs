@@ -108,7 +108,7 @@ namespace SURGE_iOS
 			pDateView.AddSubview (dpJobDate);
 
 			txtJobDate.EditingDidBegin += delegate {
-				txtJobDate.EndEditing(true);
+//				txtJobDate.EndEditing(true);
 				txtJobDate.InputView = pDateView;
 			};
 			#endregion Datepicker

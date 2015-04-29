@@ -172,7 +172,7 @@ namespace SURGE_iOS
 				new UIBarButtonItem ("Bid Task", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
 					if (isFormValid ()) {
 						UIAlertView av = new UIAlertView ("Task Status",
-							                "Tash has been bid", null, "OK");
+							"Bid has been submitted", null, "OK");
 
 						if (BL.BidTaskByProvider (JobId, ProviderId, Int32.Parse (txtBidAmount.Text))) {
 							av.Show ();

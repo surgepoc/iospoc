@@ -160,7 +160,7 @@ namespace SURGE_iOS
 					cell.ImageView.Image = UIImage.FromBundle ("icons/award.png");
 				} else if (taskStatus == "Awarded And Accepted") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/award.png");
-				} else if (taskStatus == "Inprogress") {
+				} else if (taskStatus == "In Progress") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
 				} else if (taskStatus == "Submitted Not Approved") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/approve.png");

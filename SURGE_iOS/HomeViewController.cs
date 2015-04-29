@@ -40,7 +40,7 @@ namespace SURGE_iOS
 			lblSubTitle = new UILabel(){Text = "Choose Roles below to navigate", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
 
 			tblUsers = new UITableView(){ RowHeight=30, Frame = new RectangleF (0, 75, w - 10, 400)};
-
+			
 			scrollView = new UIScrollView () {
 				Frame = new RectangleF (0, 0, float.Parse (View.Frame.Width.ToString ()), float.Parse ((View.Frame.Height - 44).ToString ())),
 				ContentSize = new CoreGraphics.CGSize(View.Frame.Width, 800)
@@ -55,6 +55,8 @@ namespace SURGE_iOS
 			tblUsers.Source = new ProviderTableSource(this);
 
 			#endregion Instantiate Controls
+
+
 
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {

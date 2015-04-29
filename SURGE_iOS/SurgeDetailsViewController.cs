@@ -150,7 +150,7 @@ namespace SURGE_iOS
 					btnDynAction.SetTitle (actionType, UIControlState.Normal);
 					btnDynAction.Frame = new RectangleF (10, 440, 90, h);
 				}
-				else if(jobStatus=="Inprogress"){
+				else if(jobStatus=="In Progress"){
 					actionType = "End Task";
 					btnDynAction.SetTitle (actionType, UIControlState.Normal);
 					btnDynAction.Frame = new RectangleF (10, 440, 90, h);
@@ -211,7 +211,7 @@ namespace SURGE_iOS
 						UIAlertView av = new UIAlertView("Task Status",
 							"Task has been started", null, "OK");
 
-						if(BL.ChangeJobStatus(JobId, "Inprogress")){
+						if(BL.ChangeJobStatus(JobId, "In Progress")){
 							av.Show();
 						}
 
@@ -221,7 +221,7 @@ namespace SURGE_iOS
 					}
 					else if(actionType=="End Task"){
 						UIAlertView av = new UIAlertView("Task Status",
-							"Task has been ended", null, "OK");
+							"Task has been completed", null, "OK");
 
 						if(BL.ChangeJobStatus(JobId, "Completed Not Submitted")){
 							av.Show();
