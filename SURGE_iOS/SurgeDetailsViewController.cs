@@ -70,7 +70,7 @@ namespace SURGE_iOS
 
 			lblAwardToCaption = new UILabel (){ Text = "to", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 165, w - 10, h) };
 
-			imgProvider = new UIImageView() { Frame = new RectangleF (10, 200, 64, 64), Image = UIImage.FromBundle("ProfileDefault.png")};
+			imgProvider = new UIImageView() { Frame = new RectangleF (10, 200, 64, 64), Image = UIImage.FromBundle("ProfilePic.jpg")};
 
 			lblProviderNameCaption = new UILabel() { Text = "Name", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 265, w - 10, h) };
 
@@ -140,13 +140,18 @@ namespace SURGE_iOS
 
 				string jobStatus = dtJobDetails.Rows[0]["JobStatus"].ToString();
 
-				if(jobStatus == "Awarded" || jobStatus =="Inprogress"){
-					actionType = "Cancel Task";
-					btnDynAction.SetTitle (actionType, UIControlState.Normal);
-					btnDynAction.Frame = new RectangleF (10, 440, 80, h);
-				}
-				else if(jobStatus=="Submitted"){
+			 if(jobStatus=="Submitted Not Approved"){
 					actionType = "Approve Task";
+					btnDynAction.SetTitle (actionType, UIControlState.Normal);
+					btnDynAction.Frame = new RectangleF (10, 440, 90, h);
+				}
+				else if(jobStatus=="Awarded And Accepted"){
+					actionType = "Start Task";
+					btnDynAction.SetTitle (actionType, UIControlState.Normal);
+					btnDynAction.Frame = new RectangleF (10, 440, 90, h);
+				}
+				else if(jobStatus=="Inprogress"){
+					actionType = "End Task";
 					btnDynAction.SetTitle (actionType, UIControlState.Normal);
 					btnDynAction.Frame = new RectangleF (10, 440, 90, h);
 				}
@@ -183,7 +188,7 @@ namespace SURGE_iOS
 					UIAlertView av = new UIAlertView("Task Status",
 						"Task has been approved", null, "OK");
 					
-					if(BL.ChangeJobStatus(JobId, "Completed")){
+					if(BL.ChangeJobStatus(JobId, "Approved And Closed")){
 						av.Show();
 					}
 
@@ -202,12 +207,36 @@ namespace SURGE_iOS
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem(actionType, UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
-					if(actionType == "Approve Task"){
+					if(actionType=="Start Task"){
+						UIAlertView av = new UIAlertView("Task Status",
+							"Task has been started", null, "OK");
+
+						if(BL.ChangeJobStatus(JobId, "Inprogress")){
+							av.Show();
+						}
+
+						AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+
+						this.NavigationController.PushViewController(adminJobsView, true);
+					}
+					else if(actionType=="End Task"){
+						UIAlertView av = new UIAlertView("Task Status",
+							"Task has been ended", null, "OK");
+
+						if(BL.ChangeJobStatus(JobId, "Completed Not Submitted")){
+							av.Show();
+						}
+
+						AdminJobsViewController adminJobsView = (AdminJobsViewController) this.Storyboard.InstantiateViewController("AdminJobsViewController");
+
+						this.NavigationController.PushViewController(adminJobsView, true);
+					}
+					else if(actionType == "Approve Task"){
 
 						UIAlertView av = new UIAlertView("Task Status",
 							"Task has been approved", null, "OK");
 
-						if(BL.ChangeJobStatus(JobId, "Completed")){
+						if(BL.ChangeJobStatus(JobId, "Approved And Closed")){
 							av.Show();
 						}
 

@@ -30,6 +30,7 @@ namespace SURGE.Common
 			myCmd.Parameters.AddWithValue ("@forHospital", newJob.ForHospital);
 			myCmd.Parameters.AddWithValue ("@creatorId", newJob.CreatorId);
 			myCmd.Parameters.AddWithValue ("@creatorType", newJob.CreatorType);
+			myCmd.Parameters.AddWithValue ("@byInvite", newJob.ByInvite);
 			myCmd.Parameters.AddWithValue ("@ptype", 1);
 
 			SqlDataAdapter myAdp = new SqlDataAdapter (myCmd);

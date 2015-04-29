@@ -156,13 +156,17 @@ namespace SURGE_iOS
 
 				if (taskStatus == "New") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/tag.png");
-				} else if (taskStatus == "Awarded") {
+				} else if (taskStatus == "Awarded Not Accepted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/award.png");
+				} else if (taskStatus == "Awarded And Accepted") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/award.png");
 				} else if (taskStatus == "Inprogress") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
-				} else if (taskStatus == "Submitted") {
+				} else if (taskStatus == "Submitted Not Approved") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/approve.png");
-				} else if (taskStatus == "Completed") {
+				} else if (taskStatus == "Completed Not Submitted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
+				} else if (taskStatus == "Approved And Closed") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
 				}
 

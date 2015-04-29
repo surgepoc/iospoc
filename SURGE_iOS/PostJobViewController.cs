@@ -11,9 +11,9 @@ namespace SURGE_iOS
 	partial class PostJobViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblsubHeading, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption;
+		UILabel lblHeading, lblsubHeading, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption, lblByInviteCaption;
 		UITextField txtTitle, txtJobDesc, txtJobDate, txtFromTime, txtToTime, txtBudget;
-		UISwitch swtchForBusiness;
+		UISwitch swtchForBusiness, swtchByInvite;
 		UIScrollView scrollView;
 		UIButton btnPostJob;
 		UIDatePicker dpJobDate, dpJobFromTime, dpJobToTime;
@@ -68,6 +68,8 @@ namespace SURGE_iOS
 			lblForBusinessCaption = new UILabel (){ Text = "On Behalf of Hospital", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 395, w - 10, h) };
 			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 420,  w - 10, h) };
 
+			lblByInviteCaption = new UILabel (){ Text = "Show this task to Invitees only", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 455, w - 10, h) };
+			swtchByInvite = new UISwitch{ On = false, Frame = new RectangleF (10, 480,  w - 10, h) };
 
 			btnPostJob = UIButton.FromType(UIButtonType.RoundedRect);
 			btnPostJob.Font = UIFont.FromName ("Helvetica", 14f);
@@ -201,44 +203,47 @@ namespace SURGE_iOS
 			scrollView.AddSubview (txtBudget);
 			scrollView.AddSubview (swtchForBusiness);
 			scrollView.AddSubview (lblForBusinessCaption);
+			scrollView.AddSubview(lblByInviteCaption);
+			scrollView.AddSubview(swtchByInvite);
 //			scrollView.AddSubview (btnPostJob);
 
 			View.AddSubview (scrollView);
 			#endregion Scroll View
 
 			//Post button click event
-			btnPostJob.TouchUpInside+= (object sender, EventArgs e) => {
-				Types.Job newJob = new Types.Job();
-				newJob.Title = txtTitle.Text;
-				newJob.JobDesc = txtJobDesc.Text;
-				newJob.JobStartDate = DateTime.Parse( txtJobDate.Text);
-				newJob.JobStartTime = txtFromTime.Text;
-				newJob.JobEndTime = txtToTime.Text;
-				newJob.Budget = float.Parse(txtBudget.Text);
-				newJob.ForHospital = swtchForBusiness.On;
-				newJob.CreatorId = 1;
-				newJob.CreatorType = "Hospitalist";
-
-				DataTable dtNewJob = new DataTable();
-				dtNewJob = BL.PostJob(newJob);
-
-				if(dtNewJob.Rows.Count>0){
-					var av = new UIAlertView("Task Status", "Task has been posted",null,"OK");
-					av.Show();
-					ClearForm();
-
-					//Redirect to Tag Providers
-					var tagProviderView = (TagProviderViewController) this.Storyboard.InstantiateViewController("TagProviderViewController") ;
-					tagProviderView.JobId = Int32.Parse(dtNewJob.Rows[0][0].ToString());
-
-
-					this.NavigationController.PushViewController(tagProviderView, true);
-				}
-				else{
-					var av = new UIAlertView("Task Status", "Some thing went wrong", null, "OK");
-					av.Show();
-				}
-			};
+//			btnPostJob.TouchUpInside+= (object sender, EventArgs e) => {
+//				Types.Job newJob = new Types.Job();
+//				newJob.Title = txtTitle.Text;
+//				newJob.JobDesc = txtJobDesc.Text;
+//				newJob.JobStartDate = DateTime.Parse( txtJobDate.Text);
+//				newJob.JobStartTime = txtFromTime.Text;
+//				newJob.JobEndTime = txtToTime.Text;
+//				newJob.Budget = float.Parse(txtBudget.Text);
+//				newJob.ForHospital = swtchForBusiness.On;
+//				newJob.ByInvite = swtchByInvite.On;
+//				newJob.CreatorId = 1;
+//				newJob.CreatorType = "Hospitalist";
+//
+//				DataTable dtNewJob = new DataTable();
+//				dtNewJob = BL.PostJob(newJob);
+//
+//				if(dtNewJob.Rows.Count>0){
+//					var av = new UIAlertView("Task Status", "Task has been posted",null,"OK");
+//					av.Show();
+//					ClearForm();
+//
+//					//Redirect to Tag Providers
+//					var tagProviderView = (TagProviderViewController) this.Storyboard.InstantiateViewController("TagProviderViewController") ;
+//					tagProviderView.JobId = Int32.Parse(dtNewJob.Rows[0][0].ToString());
+//
+//
+//					this.NavigationController.PushViewController(tagProviderView, true);
+//				}
+//				else{
+//					var av = new UIAlertView("Task Status", "Some thing went wrong", null, "OK");
+//					av.Show();
+//				}
+//			};
 
 
 			//Resigning Firstresponder
@@ -279,6 +284,7 @@ namespace SURGE_iOS
 
 			this.SetToolbarItems( new UIBarButtonItem[] {
 				new UIBarButtonItem(UIBarButtonSystemItem.Save, (s,e) => {
+					if(isFormValid()){
 					Types.Job newJob = new Types.Job();
 					newJob.Title = txtTitle.Text;
 					newJob.JobDesc = txtJobDesc.Text;
@@ -287,6 +293,7 @@ namespace SURGE_iOS
 					newJob.JobEndTime = txtToTime.Text;
 					newJob.Budget = float.Parse(txtBudget.Text);
 					newJob.ForHospital = swtchForBusiness.On;
+					newJob.ByInvite = swtchByInvite.On;
 					newJob.CreatorId = 1;
 					newJob.CreatorType = "Hospitalist";
 
@@ -308,6 +315,7 @@ namespace SURGE_iOS
 					else{
 						var av = new UIAlertView("Task Status", "Some thing went wrong", null, "OK");
 						av.Show();
+						}
 					}
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) { Width = 50 }
@@ -317,6 +325,31 @@ namespace SURGE_iOS
 			}, false);
 
 			this.NavigationController.ToolbarHidden = false;
+		}
+
+		bool isFormValid(){
+			string msg = "";
+			if (txtTitle.Text == "") {
+				msg = "Title can not be empty";
+			} else if (txtJobDesc.Text == "") {
+				msg = "Job description can not be empty";
+			} else if (txtJobDate.Text == "") {
+				msg = "Job start date can not be empty";
+			} else if (txtFromTime.Text == "") {
+				msg = "Job start time can not be empty";
+			} else if (txtToTime.Text == "") {
+				msg = "Job end time can not be empty";
+			} else if (txtBudget.Text == "") {
+				msg="Budget can not be empty";
+			}
+
+			if (msg != "") {
+				UIAlertView av = new UIAlertView ("Validation Error", msg, null, "OK");
+				av.Show();
+				return false;
+			}
+
+			return true;
 		}
 
 		#region Job Date, From Time & To Time Done and Cancel delegates

@@ -11,9 +11,8 @@ namespace SURGE_iOS
 	partial class SubmitTaskViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblRemarksCaption, lblBidAmountCaption, lblBidAmount;
+		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobTitle, lblJobStatusCaption, lblJobStatus, lblBidAmountCaption, lblBidAmount;
 		UIButton btnJobDetails, btnAction, btnCancel;
-		UITextField txtRemarks;
 		UIScrollView scrollView;
 
 		#endregion Declare Controls
@@ -63,9 +62,10 @@ namespace SURGE_iOS
 			lblBidAmount = new UILabel(){ Text = "$0", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 185, w - 10, h) };
 			lblBidAmount.TextColor = UIColor.FromRGB (81, 125, 137);
 
-			lblRemarksCaption = new UILabel (){ Text = "Remarks", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
+			lblJobStatusCaption = new UILabel (){ Text = "Task Status", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 220, w - 10, h) };
 
-			txtRemarks = new UITextField(){ Placeholder="Enter your remarks here", Frame = new RectangleF (10, 250, w - 10, h)};
+			lblJobStatus = new UILabel(){Text="Job Status goes here", Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 240, w - 10, h) };
+			lblJobStatus.TextColor = UIColor.FromRGB (0, 44, 84);
 
 			btnAction = UIButton.FromType(UIButtonType.RoundedRect);
 			btnAction.Font = UIFont.FromName ("Helvetica", 14f);
@@ -89,8 +89,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview(btnJobDetails);
 			scrollView.AddSubview(lblBidAmountCaption);
 			scrollView.AddSubview(lblBidAmount);
-			scrollView.AddSubview(lblRemarksCaption);
-			scrollView.AddSubview(txtRemarks);
+			scrollView.AddSubview(lblJobStatusCaption);
+			scrollView.AddSubview(lblJobStatus);
 //			scrollView.AddSubview(btnAction);
 //			scrollView.AddSubview(btnCancel);
 
@@ -104,7 +104,7 @@ namespace SURGE_iOS
 			string actionType;
 
 			lblJobTitle.Text = dtJobDetails.Rows[0]["Title"].ToString();
-			if(dtJobDetails.Rows[0]["jobStatus"].ToString() == "Inprogress"){
+			if(dtJobDetails.Rows[0]["jobStatus"].ToString() == "Completed Not Submitted"){
 				actionType = "Submit Task";
 				lblSubTitle.Text = "You can submit this task if completed";
 			}
@@ -124,6 +124,8 @@ namespace SURGE_iOS
 				}
 			}
 			#endregion Load his bid
+
+			lblJobStatus.Text = dtJobDetails.Rows [0] ["JobStatus"].ToString ();
 
 			btnAction.TouchUpInside+= (object sender, EventArgs e) => {
 
@@ -147,11 +149,7 @@ namespace SURGE_iOS
 				taskDetailsView.JobId = JobId;
 				this.NavigationController.PushViewController(taskDetailsView, true);
 			};
-
-			txtRemarks.ShouldReturn += ((textField) => { 
-				textField.ResignFirstResponder ();
-				return true; 
-			});
+				
 
 			//Set Navigationcontroller tab bar
 			this.SetToolbarItems( new UIBarButtonItem[] {
@@ -160,13 +158,13 @@ namespace SURGE_iOS
 					UIAlertView av = new UIAlertView("Task Status",
 						"Task has been submitted",null, "OK");
 
-					if((BL.ChangeJobStatus(JobId, "Submitted"))){
+					if((BL.ChangeJobStatus(JobId, "Submitted Not Approved"))){
 						av.Show();
 					}
 
 					ProviderJobsViewController providerJobsView = 
 						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
-
+						providerJobsView.ProviderId = ProviderId;
 					this.NavigationController.PushViewController(providerJobsView, true);
 					}
 				})

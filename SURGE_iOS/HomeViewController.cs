@@ -56,6 +56,13 @@ namespace SURGE_iOS
 
 			#endregion Instantiate Controls
 
+			//Set Navigationcontroller tab bar
+			this.SetToolbarItems( new UIBarButtonItem[] {
+				new UIBarButtonItem("Copyright 2015 Envision Inc", UIBarButtonItemStyle.Plain, (object sender, EventArgs e) => {
+				})
+			}, false);
+
+			this.NavigationController.ToolbarHidden = false;
 		}
 
 		class ProviderTableSource: UITableViewSource

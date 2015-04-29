@@ -20,6 +20,7 @@ namespace SURGE.Common
 			public string Status{get;set;}
 			public int CreatorId{get;set;}
 			public string CreatorType{ get; set;}
+			public bool ByInvite{get;set;}
 		}
 
 	}

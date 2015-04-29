@@ -48,6 +48,7 @@ namespace SURGE_iOS
 			dtJobs = BL.GetAllJobsForProvider (ProviderId);
 
 			#region Instantiate Controls
+
 			lblHeading = new UILabel(){Text = "Task List - " + ((dtJobs.Rows.Count>0)?dtJobs.Rows.Count.ToString():"0")
 					, Font=UIFont.FromName("Helvetica", 16f), Frame = new RectangleF (10, 20, w - 10, h) };
 			lblSubTitle = new UILabel(){Text = "Manage Tasks here", Font=UIFont.FromName("Helvetica", 12f), Frame = new RectangleF (10, 40, w - 10, h) };
@@ -149,13 +150,17 @@ namespace SURGE_iOS
 
 				if (taskStatus == "New" || taskStatus == "Invited") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/bid.png");
-				} else if (taskStatus == "Awarded") {
+				} else if (taskStatus == "Awarded Not Accepted") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/accept.png");
+				} else if (taskStatus == "Awarded And Accepted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
 				} else if (taskStatus == "Inprogress") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
-				} else if (taskStatus == "Submitted") {
+				} else if (taskStatus == "Completed Not Submitted") {
+					cell.ImageView.Image = UIImage.FromBundle ("icons/view.png");
+				} else if (taskStatus == "Submitted Not Approved") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
-				} else if (taskStatus == "Completed") {
+				} else if (taskStatus == "Approved And Closed") {
 					cell.ImageView.Image = UIImage.FromBundle ("icons/rate.png");
 				}
 
@@ -193,7 +198,7 @@ namespace SURGE_iOS
 					}
 				}
 
-				if (dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "Awarded") {
+				if (dtNew.Rows [indexPath.Row] ["jobStatus"].ToString () == "Awarded Not Accepted") {
 					AcceptTaskViewController acceptTask = (AcceptTaskViewController)parentView.Storyboard.InstantiateViewController ("AcceptTaskViewController");
 					acceptTask.JobId = Int32.Parse (dtNew.Rows [indexPath.Row] ["ID"].ToString ()); 
 					acceptTask.ProviderId = providerId;

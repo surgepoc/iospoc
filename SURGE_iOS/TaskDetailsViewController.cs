@@ -12,9 +12,9 @@ namespace SURGE_iOS
 	partial class TaskDetailsViewController : UIViewController
 	{
 		#region Declare Controls
-		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption;
+		UILabel lblHeading, lblSubTitle, lblTitleCaption, lblJobDescCaption, lblJobDateCaption, lblJobFromTimeCaption, lblJobToTimeCaption, lblBudgetCaption, lblForBusinessCaption, lblByInviteCaption;
 		UILabel lblTitle, lblJobDesc, lblJobDate, lblFromTime, lblToTime, lblBudget;
-		UISwitch swtchForBusiness;
+		UISwitch swtchForBusiness, swtchByInvite;
 		UIScrollView scrollView;
 		#endregion Declare Controls
 
@@ -129,6 +129,13 @@ namespace SURGE_iOS
 			};
 			swtchForBusiness = new UISwitch{ On = true, Frame = new RectangleF (10, 430, w - 10, h) };
 
+			lblByInviteCaption = new UILabel () {
+				Text = "Show this task to Invitees only",
+				Font = UIFont.FromName ("Helvetica", 12f),
+				Frame = new RectangleF (10, 465, w - 10, h)
+			};
+			swtchByInvite = new UISwitch{ On = true, Frame = new RectangleF (10, 490, w - 10, h) };
+
 			#endregion Instantiate controls
 
 			#region ScrollView 
@@ -154,6 +161,8 @@ namespace SURGE_iOS
 			scrollView.AddSubview (lblBudget);
 			scrollView.AddSubview (swtchForBusiness);
 			scrollView.AddSubview (lblForBusinessCaption);
+			scrollView.AddSubview(lblByInviteCaption);
+			scrollView.AddSubview(swtchByInvite);
 
 			View.AddSubview (scrollView);
 			#endregion Scroll View
@@ -172,6 +181,12 @@ namespace SURGE_iOS
 				}
 				else{
 					swtchForBusiness.On=false;
+				}
+				if(bool.Parse(dtJobDetails.Rows[0]["ByInvite"].ToString())){
+					swtchByInvite.On = true;
+				}
+				else{
+					swtchByInvite.On=false;
 				}
 			}
 

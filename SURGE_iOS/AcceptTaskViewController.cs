@@ -162,13 +162,13 @@ namespace SURGE_iOS
 					UIAlertView av = new UIAlertView("Task Status",
 						"Task has been accepted", null, "OK");
 
-					if(BL.ChangeJobStatus(JobId, "Inprogress")){
+					if(BL.ChangeJobStatus(JobId, "Awarded And Accepted")){
 						av.Show();
 					}
 
 					ProviderJobsViewController providerJobsView = 
 						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
-
+					providerJobsView.ProviderId = ProviderId;
 					this.NavigationController.PushViewController(providerJobsView, true);
 				})
 				, new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace) {  Width = 30 }
@@ -182,7 +182,7 @@ namespace SURGE_iOS
 
 					ProviderJobsViewController providerJobsView = 
 						(ProviderJobsViewController) this.Storyboard.InstantiateViewController("ProviderJobsViewController"); 
-
+					providerJobsView.ProviderId = ProviderId;
 					this.NavigationController.PushViewController(providerJobsView, true);
 				})
 			}, false);
