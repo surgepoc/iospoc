@@ -25,7 +25,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>west</MtouchI18n>
-    <CodesignProvision>fa9e6e56-6ff5-4824-9ce5-73003160db79</CodesignProvision>
+    <CodesignProvision>5819d1ae-1751-4457-b27e-e40f7456a0dd</CodesignProvision>
     <CodesignKey>iPhone Distribution: Streamlined Medical Solutions, LLC (V9584S5W69)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
