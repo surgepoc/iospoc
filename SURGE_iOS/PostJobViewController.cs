@@ -109,6 +109,7 @@ namespace SURGE_iOS
 
 			txtJobDate.EditingDidBegin += delegate {
 //				txtJobDate.EndEditing(true);
+				pDateView.Hidden=false;
 				txtJobDate.InputView = pDateView;
 			};
 			#endregion Datepicker
@@ -142,6 +143,7 @@ namespace SURGE_iOS
 			pFromTimeView.AddSubview (dpJobFromTime);
 
 			txtFromTime.EditingDidBegin += delegate {
+				pFromTimeView.Hidden=false;
 				txtFromTime.InputView = pFromTimeView;
 			};
 			#endregion From Time Picker
@@ -176,6 +178,7 @@ namespace SURGE_iOS
 
 
 			txtToTime.EditingDidBegin += delegate {
+				pToTimeView.Hidden=false;
 				txtToTime.InputView = pToTimeView;
 			};
 			#endregion To Time Picker
@@ -364,6 +367,7 @@ namespace SURGE_iOS
 		private void pickerDateCancel(object sender, EventArgs e)
 		{
 			pDateView.Hidden = true;
+			txtJobDate.ResignFirstResponder ();
 		}
 
 		private void pickerFromTimeDone(object sender, EventArgs e)
@@ -377,6 +381,7 @@ namespace SURGE_iOS
 		private void pickerFromTimeCancel(object sender, EventArgs e)
 		{
 			pFromTimeView.Hidden = true;
+			txtFromTime.ResignFirstResponder ();
 		}
 
 		private void pickerToTimeDone(object sender, EventArgs e)
@@ -390,6 +395,7 @@ namespace SURGE_iOS
 		private void pickerToTimeCancel(object sender, EventArgs e)
 		{
 			pToTimeView.Hidden = true;
+			txtToTime.ResignFirstResponder();
 		}
 		#endregion Job Date, From Time & To Time Done and Cancel delegates
 
